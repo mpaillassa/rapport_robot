@@ -1,0 +1,160 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Example: Project Report
+%
+% Source: http://www.howtotex.com
+%
+% Feel free to distribute this example, but please keep the referral
+% to howtotex.com
+% Date: March 2011 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Edit the title below to update the display in My Documents
+%\title{Project Report}
+%
+%%% Preamble
+\documentclass[paper=a4,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{kpfonts}
+%\usepackage[fontsize=12pt]{scrextend}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+% English language/hyphenation
+
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+%\usepackage[pdftex]{graphicx}	
+\usepackage{url}
+\usepackage[bottom=10em]{geometry}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{rotating}
+\usepackage{lscape}
+ 
+
+
+%%% Custom sectioning
+%\usepackage{sectsty}
+%\allsectionsfont{\normalfont\scshape}
+
+%% Language definition package (for XML Annexe)
+\usepackage{listings}
+\usepackage{color}
+
+%% Local modification of margins
+%\newenvironment{changemargin}[2]{\begin{list}{}{%
+%      \setlength{\topsep}{0pt}%
+%      \setlength{\leftmargin}{0pt}%
+%      \setlength{\rightmargin}{0pt}%
+%      \setlength{\listparindent}{\parindent}%
+%      \setlength{\itemindent}{\parindent}%
+%      \setlength{\parsep}{0pt plus 1pt}%
+%      \addtolength{\leftmargin}{#1}%
+%      \addtolength{\rightmargin}{#2}%
+%    }\item }{\end{list}}
+%%%
+
+%%% Custom headers/footers (fancyhdr package)
+%\usepackage{fancyhdr}
+%\pagestyle{fancyplain}
+%\fancyhead{}											% No page header
+%\fancyfoot[L]{}											% Empty 
+%\fancyfoot[C]{}											% Empty
+%\fancyfoot[C]{\thepage}									% Pagenumbering
+%\renewcommand{\headrulewidth}{0pt}			% Remove header underlines
+%\renewcommand{\footrulewidth}{0pt}				% Remove footer underlines
+%\setlength{\headheight}{13.6pt}
+
+
+%%% Equation and float numbering
+\numberwithin{equation}{section}		% Equationnumbering: section.eq#
+\numberwithin{figure}{section}			% Figurenumbering: section.fig#
+\numberwithin{table}{section}				% Tablenumbering: section.tab#
+
+%Graphics path
+%\graphicspath{./Images/}
+
+%%% Maketitle metadata
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 	% Horizontal rule
+
+\title{
+  %\vspace{-1in} 			
+  %\usefont{OT1}{bch}{b}{n}
+  \horrule{1.5pt} \\[0.5cm]	
+  \Huge \textbf{Projet Rain Of Music : \\ Rapport} \\ [20pt]
+ % \huge TM, \\ Université d'Osaka \\ [15pt]
+ 	%	\vspace{1cm}  
+    \LARGE Année scolaire 2015-2016 \\ 
+  \horrule{1.5pt} \\[0.5cm]
+  %
+}
+
+\author{						
+    \LARGE \underline{Encadrants} : Jean-Michaël Celerier, \\
+   					\LARGE	\hspace{5cm} Myriam De Sainte-Catherine\\			
+   	\vspace{1cm} 
+   	\normalfont
+   	\LARGE Élèves :  Akané LEVY, Maxime PAILLASSA    
+}
+\date{}
+
+%%% Begin document
+\begin{document}
+\graphicspath{{./imgs/}{.}}
+\maketitle
+
+\begin{figure}[H]
+  \centering\includegraphics[scale=1.2]{logo_enseirb.png}
+\end{figure}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+\normalsize
+
+
+% contexte du projet
+\input{introduction.tex}
+
+\newpage
+
+% objectifs et les motivations du projet
+\input{objectifs.tex}
+
+% ce qui existe
+\input{etat_art.tex}
+
+% choix d'outils
+  % openframworks
+  % OSSIA API / Jamoma
+\input{outils.tex}
+
+% architecture et implémentation
+  % archi
+  % implementation
+    % visualisation
+    % communication
+    % simulation
+\input{archi_imple.tex}
+
+% évaluation et validation
+\input{eval.tex}
+
+% conclusion
+\input{conclusion.tex}
+
+  \newpage
+
+  \bibliographystyle{plain}
+  \bibliography{bibli.bib}
+  \newpage
+
+  \appendix
+  \part*{Annexes}
+  \input{annexe.tex}
+
+%%% End document
+\end{document}
