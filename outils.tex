@@ -1,0 +1,45 @@
+\section{Outils utilisés}
+
+\subsection{L'API d'OSSIA et Jamoma}
+
+\subsection{Bibliothèques graphiques 3D}
+
+Dans cette partie, un bilan de l'étude des différents biblitohèques sera présentée sous forme de tableau avec cinq critères jugés importants dans le choix de la biliothèque. Parmi ces cinq, ne seront pas présentées ceux élémentaires telles que la présence d'un moteur 3D complet, l'aspect multi-plateforme, pour lesquelles il semble évident que toutes les bibliothèques citées jusque là les remplissent.
+
+Un des critères qui nous a paru essentiel dans le développement du logiciel est l'auto-suffisance de la bibliothèque. C'est-à-dire un choix de possibilité assez large proposé dans la bibliothèque de base pour éviter l'utilisation de plusieurs outils annexes. Par exemple, nous avons vu pour Babylon.js qu'il faudrait l'utilisation d'autres outils (Node.js ?) pour pouvoir réaliser la réception de messages UDP. 
+
+Un critère moins important dans une première partie du développement mais qui serait nécessaire par la suite est la présence d'un moteur physique. En effet, il serait intéressant d'avoir des fonctionnalités pour la détection de collisions, permettant ainsi d'alerter l'artiste lors de la conception de la chorégraphie.
+
+Plus généralement, certains critères choisis pour ce bilan ont été réfléchi en vue de l'interopérabilité de notre logiciel avec i-score : l'aspect open source (notamment license GPL) et le langage utilsé. En effet, il nous semblait plus pertinant de respecter une unicité de langage avec i-score, et donc choisir le C++. 
+D'autres critères ont été pensé dans l'optique de la maintenabilité, notamment la facilité à prendre en main les différentes fonctionnalités de la bibliothèque, la stabilité des versions proposées, la présence d'une communauté active (tant au niveau développeurs qu'utilisateurs).
+
+
+
+Les critères qui ont donc été choisi pour ce bilan sont : 
+\begin{itemize}
+\item open source et notamment license GPL pour 
+\item détection de collisions (moteur physique)
+\item auto-suffisant (facilité d'utilisation d'UDP)
+\item unicité du langage avec i-score (C++)
+\item facilité à prendre en main
+\item maintenabilité (bonne communauté active)
+\end{itemize} 
+ 
+
+
+\newpage
+\begin{landscape}
+\hspace{-2cm} 
+\begin{tabular}{l|c|c|c|c|c|c|c}
+Bibliothèque & open source & moteur physique & auto-suffisant & langage & prise en main & maintenabilité & stabilité & communauté active\\
+\hline
+OpenFrameworks & Oui & Oui & Oui & C++ & Bonne & Oui & Oui & Fort\\
+OpenSceneGraph & Oui & Oui & Oui & C++ & Moyenne & Oui & Oui & Moyen\\ 
+OGRE & Oui & Oui & Oui & C++ & Moyenne & Oui & Oui & Fort\\
+Qt3D & Oui & Oui & Oui & C++ & Moyenne & Oui & Non & Faible\\
+Unity & Non & Oui & Oui & C\# & Bonne & Oui & Oui & Fort\\
+Babylon.js  & Non & Oui & Oui & JavaScript & Bonne & Oui & Oui & Moyen/Fort\\
+\end{tabular}
+\end{landscape}
+
+Finalement, presque toutes les bibliothèques conviennent en terme de performances et de fonctionnalités. Le choix s'est donc porté sur les derniers critères (prise en main, maintenabilité, stabilité et communauté) qui s'avèrent être aussi importants dans le cadre de notre projet. Ainsi, nous avons choisi d'utiliser OpenFrameworks, qui semble être la meilleure par rapport à l'ensemble des critères.  
