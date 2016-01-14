@@ -6,6 +6,31 @@
 
 \subsubsection{Visualisation}
 
+mise en place de la scène 3D très facilement avec une classe camera déjà toute prête dans openFrameworks (\verb|EasyCam|)
+
+possibilité de rajouter des axes x y z en plus pour mieux situer le robot dans l'espace
+
+avec la souris, possibilité de se déplacer et de zoomer dans la scène 3D 
+
+importation de modèle 3D pour représenter les metabots
+
+sélection des robots, affichage d'informations relatives au robot sélectionné (identifiant et type du robot, position et fréquence pour les metabots)
+
+affichage de messages warning pour les robots qui rentrent en collision et la zone de colliison est indiquée à l'aide d'un cercle rouge dans la scène
+
+ajout d'une interface pour visualiser/modifier les positions et les vitesses via des sliders, visualiser s'il y a des collisions ou non, lancer la chorégraphie (boutton play)
+
 \subsubsection{Communication}
 
+publication d'un arbre contenant le noeud 'scène', qui lui-même contient les noeuds pour les robots (chaque robot représente un sous-arbre contenant les différents attributs)
+
+chaque attribut des robots est publié : la classe \verb|Parameter| qui permet cette publication encapsule la classe \verb|ofParameter| de openFrameworks. La classe \verb|ofParameter| permet de lier un listener à une valeur. Le listener permet de lier la valeur contenue dans \verb|ofParameter| à une autre fonction qui permet de mettre à jour cette valeur. Par exemple, un ofParameter peut être utilisée pour lier une valeur position en x avec un slider dans l'interface utilisateur : le fait de bouger le slider mettre à jour la valeur représentant la position en x. De cette façon, utiliser une variable de type \verb|ofParameter| permet de lier un attribut de robot à l'interface utilisateur. 
+Il manque donc que le lien avec i-score : lorsqu'une valeur, dans l'arbre publié en réseau et affichée dans i-score, est modifiée via l'interface utilisateur d'i-score, il faudrait qu'au niveau de notre logiciel la valeur soit mise à jour. Sachant, que dans i-score lorsqu'une valeur de l'arbre est modifiée, l'arbre en réseau est directement mise à jour à l'aide du protocole Minuit.
+
+Ainsi, nous avons choisi de réaliser une classe \verb|Parameter| qui a un listener (appelé \verb|Callback|) aussi vers i-score, lui permettant de mettre à jour sa valeur en accord avec i-score. Ainsi, la classe \verb|Parameter| encapsulant \verb|ofParameter|, a la possibilité de mettre à jour sa valeur à l'aide de ses deux listeners : l'un vers l'interface utilisateur de notre simulation, l'autre vers i-score.
+
+
 \subsubsection{Simulation}
+
+détection de collision manuelle : bibliothèques graphiques ne compilaient pas lors de l'implémentation de la collision (Bullet)...
+
