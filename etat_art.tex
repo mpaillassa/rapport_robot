@@ -2,6 +2,56 @@
 
 Dans cette partie, nous allons présenter les moyens existant nous permettant de répondre à nos objectis. D'une part, les moyens pour communiquer avec i-score et d'autre part, ce qui a été fait en terme de visualisation et de simulation de performances scéniques impliquant des robots.
 
+\subsection{Bibliothèques graphiques}
+Dans cette partie, nous allons présenter différentes bibliothèques graphiques 3D que nous pourrions utiliser: OpenSceneGraph, OpenFrameworks, Ogre, Blender, Unity, Qt3D, Babylon.js et Three.js. Toutes ces bibliothèques sont basées sur OpenGL (ou WebGL). Nous n'avons pas voulu utiliser uniquement OpenGL car cela aurait demandé plus de code et de temps pour un résultat équivalent. 
+
+Elles sont déployables sur pratiquement toutes les plateformes (y compris smartphones et tablettes). Celles qui sont orientées objets permettent d'avoir une programmation plus haut niveau tout en profitant des performances d'OpenGL. Elles intègrent également des packages additionnels pour faire des rendus 3D plus poussés. 
+
+Babylon.js et Three.js se déploient sur navigateur via javascript et utilisent WebGL.
+
+
+\subsubsection{openFrameworks}
+
+openFrameworks est open source, sous license MIT (compatible GPL), basée sur du C++ et OpenGL. Elle permet également d'intégrer et d'utiliser d'autres bibliothèques comme OpenCV par exemple, qui pourrait être utilisée pour de la gestion de trajectoires et de collisions, et de gérer des flux audio, ce qui peut s'avérer utile dans l'optique d'embarquer des haut parleurs sur les robots pour générer des sons. 
+
+De plus, une des lignes directrices de ce projet actif est la simplicité: la bibliothèque est faite de manière à pouvoir être utilisée avec un minimum de connaissances, et propose des tutoriaux sur des bases comme l'OpenGL ou la programmation orientée objet. Ceci est un atout dans notre contexte puisque nous avons peu de temps pour implémenter le projet qui sera ensuite plus facile à reprendre par d'autres personnes.
+
+\subsubsection{OpenSceneGraph}
+
+OpenSceneGraph est une bibliothèque 3D open source distribuée sous la license OSGPL (OpenSceneGraph Public License) basée sur la license LGPL. Elle est écrite en C++ et en OpenGL et est utilisée dans de nombreux domaines: réalité virtuelle, jeux vidéos, visualisation scientifique et simulation. 
+
+Le monde 3D virtuel est représenté par un graphe dont les noeuds sont logiquement et spatialement organisés. Cette vision pourrait être un problème dans le cadre du projet car nous avons peu de temps et le projet est destiné à être repris par d'autres personnes. De plus, la communauté OpenSceneGraph ne semble pas très active, ce qui pourrait indiquer que peu de gens l'utilise, et probablement les futures personnes reprenant le projet. 
+
+\subsubsection{Ogre}
+
+Ogre est encore une biliothèque open source, sous license MIT, écrite en C++ et OpenGL. Elle est beaucoup utilisée pour réaliser des jeux vidéos et faire des modélisations 3D de personnages. Dans notre cas, nous n'avons pas besoin d'aller si loin au niveau du rendu 3D. L'objectif est plus d'avoir un rendu clair et fidèle à la chorégraphie.  
+
+% \subsection{Irrlicht}
+% - explication : open source/C++/
+
+% - moteur physique : oui avec détection de collision
+
+% - stabilité : pas très stable 
+
+\subsubsection{Qt3D}
+
+Qt est un framework utilisé pour faire des interfaces graphiques. Qt est open source, écrit en C++ sous license GNU GPL ou LGPL selon les versions. Le module Qt3D permet de faire de la modélisation 3D. Cependant, ce module est encore en cours de développement. L'utiliser serait donc prendre le risque de devoir changer plus tard du code déjà écrit, ce qui peut être problématique surtout après que le projet soit repris par d'autres personnes. 
+
+\subsubsection{Blender et Unity}
+
+Blender et Unity sont deux logiciels de modélisation et d'animation 3D écrits en C, C++ et Python (Blender) et C\# (Unity). Blender est open source alors que Unity ne l'est pas, même si des licenses gratuites sont proposées. Un des avantages de ces logiciels est leur communauté qui est très active.
+
+De la même manière qu'avec Ogre, ces logiciels se dirigent plus vers du rendu 3D pour des jeux vidéos et de la modélisation 3D alors que notre objectif premier est la visualisation. 
+
+De plus, ces logiciels proposent des interfaces pour créer facilement des objets 3D ou des textures par exemple mais ce qui nous intéresse plus est la gestion de ces objets, et cela nous parait mieux de pouvoir la gérer avec du code plutôt que dans une interface graphique. 
+				
+
+\subsubsection{Babylon.js et Three.js}
+
+Babylon.js et Three.js sont des bibliothèques javascript qui utilisent WebGL pour avoir un rendu visuel dans le navigateur. Les deux sont open source, mais Three.js est sous license MIT alors que Babylon.js est sous une license Apache, qui cherche encore à être compatible avec la license GPL. L'avantage de ces bibliothèques est que seul un navigateur est nécessaire pour visualiser la scène, ce qui les rend très accessible. Cependant, plus le projet avancera et se complexifiera (possibilité de modifier la chorégraphie par exemple), plus il nous semble compliqué d'utiliser javascript.
+
+
+
 \subsection{i-score}
 
 Tout le travail réalisé devra s'interfacer avec le logiciel i-score qui sera utilisé pour écrire les chorégraphies. Pour communiquer avec un autre logiciel, i-score intègre le format OSC qui utilise le protocole UDP. Un message OSC se compose comme ceci:
