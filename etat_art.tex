@@ -54,12 +54,12 @@ Babylon.js et Three.js sont des bibliothèques javascript qui utilisent WebGL po
 
 \subsection{i-score}
 
-Tout le travail réalisé devra s'interfacer avec le logiciel i-score qui sera utilisé pour écrire les chorégraphies. Pour communiquer avec un autre logiciel, i-score intègre le format OSC qui utilise le protocole UDP. Un message OSC se compose comme ceci:
+Tout le travail réalisé devra s'interfacer avec le logiciel i-score utilisé pour écrire les chorégraphies. Pour communiquer avec un autre logiciel, i-score intègre le format OSC qui utilise le protocole UDP. Un message OSC se compose comme ceci:
 \begin{lstlisting}
 <address pattern> <data type> <data>
 \end{lstlisting}
-Address pattern est l'URL désignant la destination du message, et data type une chaîne de caractères indiquant le type de données contenues dans data.
-Cependant, le protocole Minuit peut aussi être utilisé: ce protocole s'ajoute au protocole OSC, et permet de mieux organiser les données transmises. Les adresses OSC sont organisées dans un arbre et le logiciel pourra demander via le protocole Minuit à i-score de lui communiquer la valeur de tel ou tel paramètre.  
+Address pattern représente l'URL désignant la destination du message, et data type une chaîne de caractères indiquant le type de données contenues dans data.
+Cependant, le protocole Minuit peut aussi être utilisé : ce protocole s'ajoute au protocole OSC, et permet de mieux organiser les données transmises. Les adresses OSC sont organisées dans un arbre et le logiciel pourra demander via le protocole Minuit à i-score de lui communiquer la valeur de tel ou tel paramètre.  
 
 
 \subsection{Visualisation et simulation}
