@@ -1,6 +1,29 @@
 \section{Etat de l'art}
 
-Dans cette partie, nous allons présenter les moyens existant nous permettant de répondre à nos objectis. D'une part, les moyens pour communiquer avec i-score et d'autre part, ce qui a été fait en terme de visualisation et de simulation de performances scéniques impliquant des robots.
+Dans cette partie, nous allons présenter les moyens existant nous permettant de répondre à nos objectis. Nous verrons d'abord les moyens pour communiquer avec i-score. Ensuite, nous verrons ce qui a été fait en terme de visualisation et de simulation de performances scéniques impliquant des robots. Enfin, des bibliothèques graphiques 3D seront présentées.
+
+
+\subsection{i-score}
+
+Tout le travail réalisé devra s'interfacer avec le logiciel i-score utilisé pour écrire les chorégraphies. Pour communiquer avec un autre logiciel, i-score intègre le format OSC qui utilise le protocole UDP. Un message OSC se compose comme ceci:
+\begin{lstlisting}
+<address pattern> <data type> <data>
+\end{lstlisting}
+Address pattern représente l'URL désignant la destination du message, et data type une chaîne de caractères indiquant le type de données contenues dans data.
+Cependant, le protocole Minuit peut aussi être utilisé : ce protocole s'ajoute au protocole OSC, et permet de mieux organiser les données transmises. Les adresses OSC sont organisées dans un arbre et le logiciel pourra demander via le protocole Minuit à i-score de lui communiquer la valeur de tel ou tel paramètre.  
+
+\subsection{Visualisation et simulation}
+
+Cette partie présentera quelques articles scientifiques se rapprochant de notre projet autour des thématiques telles que la visualisation de scène 3D d'une peformance scénique et la modélisation de robot dans un espace 3D. 
+
+Dans le domaine de visualisation de performance scénique 3D, un des objectifs est d'obtenir un rendu se rapprochant le plus possible de la réalité de façon à ce que l'on puisse avoir un aperçu réaliste de la performance conçue virtuellement. C'est dans cette optique que le logiciel de visualisation et simulation 3D StageViz\cite{StageViz} a été développé . Ce logiciel permet de visualiser en 3D en temps réel une performance scénique qui a été conçue virtuellement à l'aide d'un autre logiciel dédié à cela. Dans la forme, nous retrouvons ici, un cas très similaire à notre objectif avec la présence de visualisation mais aussi d'interopérabilité avec un outil de conception scénique.
+
+StageViz se base sur trois éléments principaux que l'on doit aussi retrouver dans notre projet : les objets 3D, la manipulation de la scène et la chronologie. Dans le cadre de notre projet, les objets 3D représenteront les robots et la scène pourra être visionner sous tous les angles grâce à une camera mobile. En ce qui concerne la composante temporelle, elle sera gérée au niveau d'i-score qui nous envoie les données sur les robots au fur et à mesure. 
+
+Une grande différence entre StageViz et notre projet réside dans l'utilisation du rendu 3D. StageViz serait un outil pour une simulation réaliste pour visionner les différents états des objets dans la scène au cours de la performance. Notre but serait de visualiser l'évolution des positions des objets dans la scène pour aider l'écriture de la chorégraphie. L'idée est donc d'avoir un rendu permettant une vision simplifiée et globale de la chorégraphie avec tous les robots.
+
+Dans le domaine de performance par les robots, une équipe de recherche a étudié la modélisation des différents mouvements d'un robot dans le but de visualiser une performance \cite{robotArt}. Le robot n'est pas considéré en tant qu'un seul objet avec une position mais comme un ensemble de composants possédant des paramètres (degré de liberté) et organisés hiérarchiquement. Ainsi lorsqu'un mouvement est exécuté au niveau d'une composante, il est appliqué à toutes ses composantes filles.
+
 
 \subsection{Bibliothèques graphiques}
 Dans cette partie, nous allons présenter différentes bibliothèques graphiques 3D que nous pourrions utiliser: OpenSceneGraph, OpenFrameworks, Ogre, Blender, Unity, Qt3D, Babylon.js et Three.js. Toutes ces bibliothèques sont basées sur OpenGL (ou WebGL). Nous n'avons pas voulu utiliser uniquement OpenGL car cela aurait demandé plus de code et de temps pour un résultat équivalent. 
@@ -52,25 +75,6 @@ Babylon.js et Three.js sont des bibliothèques javascript qui utilisent WebGL po
 
 
 
-\subsection{i-score}
-
-Tout le travail réalisé devra s'interfacer avec le logiciel i-score utilisé pour écrire les chorégraphies. Pour communiquer avec un autre logiciel, i-score intègre le format OSC qui utilise le protocole UDP. Un message OSC se compose comme ceci:
-\begin{lstlisting}
-<address pattern> <data type> <data>
-\end{lstlisting}
-Address pattern représente l'URL désignant la destination du message, et data type une chaîne de caractères indiquant le type de données contenues dans data.
-Cependant, le protocole Minuit peut aussi être utilisé : ce protocole s'ajoute au protocole OSC, et permet de mieux organiser les données transmises. Les adresses OSC sont organisées dans un arbre et le logiciel pourra demander via le protocole Minuit à i-score de lui communiquer la valeur de tel ou tel paramètre.  
 
 
-\subsection{Visualisation et simulation}
-
-Cette partie présentera quelques articles scientifiques se rapprochant de notre projet autour des thématiques telles que la visualisation de scène 3D d'une peformance scénique et la modélisation de robot dans un espace 3D. 
-
-Dans le domaine de visualisation de performance scénique 3D, un des objectifs est d'obtenir un rendu se rapprochant le plus possible de la réalité de façon à ce que l'on puisse avoir un aperçu réaliste de la performance conçue virtuellement. C'est dans cette optique que le logiciel de visualisation et simulation 3D StageViz\cite{StageViz} a été développé . Ce logiciel permet de visualiser en 3D en temps réel une performance scénique qui a été conçue virtuellement à l'aide d'un autre logiciel dédié à cela. Dans la forme, nous retrouvons ici, un cas très similaire à notre objectif avec la présence de visualisation mais aussi d'interopérabilité avec un outil de conception scénique.
-
-StageViz se base sur trois éléments principaux que l'on doit aussi retrouver dans notre projet : les objets 3D, la manipulation de la scène et la chronologie. Dans le cadre de notre projet, les objets 3D représenteront les robots et la scène pourra être visionner sous tous les angles grâce à une camera mobile. En ce qui concerne la composante temporelle, elle sera gérée au niveau d'i-score qui nous envoie les données sur les robots au fur et à mesure. 
-
-Une grande différence entre StageViz et notre projet réside dans l'utilisation du rendu 3D. StageViz serait un outil pour une simulation réaliste pour visionner les différents états des objets dans la scène au cours de la performance. Notre but serait de visualiser l'évolution des positions des objets dans la scène pour aider l'écriture de la chorégraphie. L'idée est donc d'avoir un rendu permettant une vision simplifiée et globale de la chorégraphie avec tous les robots.
-
-Dans le domaine de performance par les robots, une équipe de recherche a étudié la modélisation des différents mouvements d'un robot dans le but de visualiser une performance \cite{robotArt}. Le robot n'est pas considéré en tant qu'un seul objet avec une position mais comme un ensemble de composants possédant des paramètres (degré de liberté) et organisés hiérarchiquement. Ainsi lorsqu'un mouvement est exécuté au niveau d'une composante, il est appliqué à toutes ses composantes filles.
 
