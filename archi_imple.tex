@@ -12,19 +12,16 @@ Dans cette partie, nous allons présenter simulationRainOfMusic en s'intéressan
 
 \subsubsection{Visualisation}
 
-mise en place de la scène 3D très facilement avec une classe camera déjà toute prête dans openFrameworks (\verb|EasyCam|)
+La mise en place de la scène 3D se fait assez facilement car la caméra est déjà implémentée dans openFrameworks avec la classe (\verb|EasyCam|). L'utilisateur a la possibilité de se déplacer et de zoomer dans la scène 3D grâce à la souris. Les robots sont représentés par des modèles 3D.
+
+L'utilisateur peut également sélectionner un robot. Lorsq'un robot est sélectionné, différentes caractéristiques le concernant s'affichent en haut à gauche de la fenêtre de simulation. Ces caractéristiques sont son identifiant, son type (métabot ou drone) et sa position. La sélection se fait en détectant la couleur du robot.
+
+Si deux robots risquent de rentrer en collision, ceux-ci sont entourés d'un cercle rouge afin que ce soit bien visible.
+
+En plus de ces informations, un onglet permet de visualiser et de modifier les positions et vitesses des robots via des sliders. Un emplacement dans l'onglet affiche également si les robots sont en collision ou pas. Une fois des vitesses choisies, un bouton play permet de voir la chorégraphie.
+
 
 possibilité de rajouter des axes x y z en plus pour mieux situer le robot dans l'espace
-
-avec la souris, possibilité de se déplacer et de zoomer dans la scène 3D 
-
-importation de modèle 3D pour représenter les metabots
-
-sélection des robots, affichage d'informations relatives au robot sélectionné (identifiant et type du robot, position et fréquence pour les metabots)
-
-affichage de messages warning pour les robots qui rentrent en collision et la zone de colliison est indiquée à l'aide d'un cercle rouge dans la scène
-
-ajout d'une interface pour visualiser/modifier les positions et les vitesses via des sliders, visualiser s'il y a des collisions ou non, lancer la chorégraphie (boutton play)
 
 \subsubsection{Communication}
 

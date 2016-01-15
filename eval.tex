@@ -12,8 +12,18 @@ parler des aspects simulation, la proximité à la réalité (comparer le modèl
 \subsubsection{Bilan validation}
 reprendre sous forme de tableau ce qui a été cité précédemment ?
 
-\subsection{Gestion du projet}
-\subsubsection{Calendrier}
-Comparaison du calendrier initial avec celui réel
+\subsection{Gestion du projet: calendrier et difficultés}
 
-\subsubsection{Difficultés rencontrées}
+Dans cette partie, nous verrons la gestion du projet par rapport au calendrier que nous nous étions fixé. Puis nous verrons les difficultés que nous avons rencontrées. Le calendrier prévu était celui représenté sur la figure suivante \ref{cal}:
+
+\begin{figure}[H]
+  \begin{center}
+  	\includegraphics[scale=0.7]{imgs/calendrier.png}
+  	\caption{Calendrier initial}
+  	\label{cal}
+  \end{center}
+\end{figure}
+
+Finalement, ce calendrier ne représente pas vraiment ce qui a été réalisé. D'une part, la partie de simulation des mouvements des drones a été abandonnée car le projet s'est focalisé sur la mise en place des métabots en premier. D'autre part, la partie communication ne s'est pas déroulée comme prévu. L'intégration de la communication avec i-score dans simulationRainOfMusic nous a pris du temps au niveau de l'intégration de l'API d'OSSIA. Ensuite, la communication avec i-score se fait assez facilement. Le problème qui est apparu ensuite est la synchronisation entre l'interface de simulationRainOfMusic et i-score, cf LOOP. 
+
+loop: gui param i-score, pas moyen de différencier si la valeur est mise à jour depuis i-score ou à la main sur un slider.
