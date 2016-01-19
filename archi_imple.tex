@@ -1,7 +1,17 @@
-\section{Architecture et implémentation du logiciel}
+\section{Réalisation du logiciel}
 
 \subsection{Architecture}
+Dans les premières étapes de la réalisation du logiciel, nous avons établi l'architecture en respectant certains points qui nous paraissaient essentiels à ntore projet.
 
+Tout d'abord, notre logiciel étant un logiciel de visualisation avant tout, il nous semblait plus clair de choisir une architecture modèle-vue. Cela nous permettait d'avoir une séparation nette entre la partie données des robots et la partie modélisation et affichage 3D. 
+
+Ensuite, sachant que le projet contient des robots Metabot mais aussi drones, il nous avait été demandé à ce que notre logiciel soit modulaire, facilitant ainsi l'ajout de nouvaux types de robots. C'est pour cela que nous avons choisi dans notre implémentation d'utiliser le mécanisme en C++ des \verb|template| pour assurer ce côté modulaire.
+
+Enfin, une attention particulière a été portée à la classe \verb|Parameter|, jouant le rôle d'intermédiaire entre i-score et l'interface utilisateur de notre logiciel. Cette classe occupe une place importante dans le projet puisqu'elle permet de mettre à jour les valeurs en fonction des modifications apportées à notre interface et à i-score.
+
+Par ailleurs, l'intégration de la classe \verb|Parameter| dans l'architecture s'est déroulée naturellement : elle prend le rôle du contrôleur qui met à jour les valeurs du modèle en fonction des données modifiées sur la vue qui est aussi l'interface utilisateur.
+
+		
 \subsection{Implémentation}
 
 \subsubsection{Visualisation}
@@ -24,11 +34,12 @@ ajout d'une interface pour visualiser/modifier les positions et les vitesses via
 
 publication d'un arbre contenant le noeud 'scène', qui lui-même contient les noeuds pour les robots (chaque robot représente un sous-arbre contenant les différents attributs)
 
-chaque attribut des robots est publié : la classe \verb|Parameter| qui permet cette publication encapsule la classe \verb|ofParameter| de openFrameworks. La classe \verb|ofParameter| permet de lier un listener à une valeur. Le listener permet de lier la valeur contenue dans \verb|ofParameter| à une autre fonction qui permet de mettre à jour cette valeur. Par exemple, un ofParameter peut être utilisée pour lier une valeur position en x avec un slider dans l'interface utilisateur : le fait de bouger le slider mettre à jour la valeur représentant la position en x. De cette façon, utiliser une variable de type \verb|ofParameter| permet de lier un attribut de robot à l'interface utilisateur. 
+Chaque attribut des robots est publié : la classe \verb|Parameter| qui permet cette publication encapsule la classe \verb|ofParameter| de openFrameworks. La classe \verb|ofParameter| permet de lier un listener de l'interface à une valeur. Le listener est une fonctionnalité qui permet d'être constamment à l'écoute de toute modification opérée au niveau de l'interface. Par exemple, un ofParameter peut être utilisée pour lier une valeur position en x avec un slider dans l'interface utilisateur : le fait de bouger le slider met à jour la valeur représentant la position en x. De cette façon, utiliser une variable de type \verb|ofParameter| permet de lier un attribut de robot à l'interface utilisateur. 
+
 Il manque donc que le lien avec i-score : lorsqu'une valeur, dans l'arbre publié en réseau et affichée dans i-score, est modifiée via l'interface utilisateur d'i-score, il faudrait qu'au niveau de notre logiciel la valeur soit mise à jour. Sachant, que dans i-score lorsqu'une valeur de l'arbre est modifiée, l'arbre en réseau est directement mise à jour à l'aide du protocole Minuit.
 
-Ainsi, nous avons choisi de réaliser une classe \verb|Parameter| qui a un listener (appelé \verb|Callback|) aussi vers i-score, lui permettant de mettre à jour sa valeur en accord avec i-score. Ainsi, la classe \verb|Parameter| encapsulant \verb|ofParameter|, a la possibilité de mettre à jour sa valeur à l'aide de ses deux listeners : l'un vers l'interface utilisateur de notre simulation, l'autre vers i-score.
-
+Ainsi, nous avons choisi de réaliser une classe \verb|Parameter| à laquelle on peut rajouter un listener (appelé \verb|Callback|) vers i-score, lui permettant de metre à jour sa valeur en accord avec i-score. Ainsi, la classe \verb|Parameter| encapsulant \verb|ofParameter|, a la possibilité de mettre à jour sa valeur à l'aide de ses deux listeners : l'un vers l'interface utilisateur de notre simulation, l'autre vers i-score.
+     
 
 \subsubsection{Simulation}
 
