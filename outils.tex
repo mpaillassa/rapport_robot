@@ -6,9 +6,9 @@ Dans cette partie, nous allons présenter les outils que l'on a utilisé pour r�
 
 OSSIA est l'acronyme pour Open Scenario System for Interactive Application. Comme son nom l'indique, c'est un projet de développement d'outils logiciels de scénarisation pour des applications intéractives. Le logiciel i-score a été écrit dans le cadre de ce projet. 
 
-Dans simulationRainOfMusic, nous utilisons l'API implémentée dans le projet OSSIA pour pouvoir communiquer avec i-score via le protocole minuit. L'API nous permet de réaliser les principales fonctions dont nous avons besoin: publier des données vers i-score et récupérer des données d'i-score depuis simulationRainOfMusic.  Minuit fonctionne en organisant les données sous forme d'arbre. Dans simulationRainOfMusic, on va créer des robots qui ont certains attributs et l'API va nous permettre de créer les noeuds de l'arbre correspondant aux robots et à leurs attributs et de les envoyer à i-score. L'API va également nous permettre d'écouter les attributs des robots pour les actualiser dans simulationRainOfMusic et permettre l'affichage des robots. 
+Dans simulationRainOfMusic, nous utilisons l'API implémentée dans le projet OSSIA pour pouvoir communiquer avec i-score via le protocole minuit. L'API nous permet de réaliser les principales fonctions dont nous avons besoin: envoyer des données vers i-score et récupérer des données d'i-score depuis simulationRainOfMusic.  Minuit fonctionne en organisant les données sous forme d'arbre. Dans simulationRainOfMusic, on va créer des robots qui ont certains attributs et l'API va nous permettre de créer les noeuds de l'arbre correspondant aux robots et à leurs attributs et de les envoyer à i-score. L'API va également nous permettre d'écouter les attributs des robots pour les actualiser dans simulationRainOfMusic et permettre l'affichage des robots. 
 
-Des exemples simples de fonctionnement sont disponibles dans les exemples Minuit\_publication et Minuit\_Exploration de la documentation de l'API.
+Des exemples simples de fonctionnement sont disponibles dans les exemples Minuit\_publication et Minuit\_Exploration de la documentation de l'API. Un arbre est publié et partagé par Minuit\_publication et Minuit\_exploration explore cet arbre et renvoie sa structure.
 
 \subsection{Bibliothèques graphiques 3D}
 
