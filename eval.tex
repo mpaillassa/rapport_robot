@@ -12,8 +12,17 @@ parler des aspects simulation, la proximité à la réalité (comparer le modèl
 \subsubsection{Bilan validation}
 reprendre sous forme de tableau ce qui a été cité précédemment ?
 
-\subsection{Gestion du projet}
-\subsubsection{Calendrier}
-Comparaison du calendrier initial avec celui réel
+\subsection{Gestion du projet: calendrier et difficultés}
 
-\subsubsection{Difficultés rencontrées}
+Dans cette partie, nous verrons la gestion du projet par rapport au calendrier que nous nous étions fixé. Puis nous verrons les difficultés que nous avons rencontrées. Un calendrier bilan est représenté sur la figure suivante \ref{cal}:
+
+\begin{figure}[H]
+  \begin{center}
+  	\includegraphics[scale=0.7]{imgs/calendrierbis.png}
+  	\caption{Calendrier bilan. En noir ce qui était prévu. En rouge ce qui n'a pas été fait. En vert ce qui a été fait et n'était pas prévu}
+  	\label{cal}
+  \end{center}
+\end{figure}
+
+Finalement, le calendrier de départ a subi beaucoup de changements. D'une part, la partie de simulation des mouvements des drones a été abandonnée car le projet s'est focalisé sur la mise en place des métabots en premier. D'autre part, la partie communication ne s'est pas déroulée comme prévu. L'intégration de la communication avec i-score dans simulationRainOfMusic (intégration de l'API d'OSSIA dans simulationRainOfMusic) nous a pris du temps. Une fois l'API en place, la communication avec i-score se fait assez facilement. Ensuite, l'ajout des panels dans l'interface de simulationRainOfMusic et de la possibilité de modifier les paramètres des robots via ces panels a posé deux problèmes: la communication entre l'interface et le reste du logiciel, qui a donné lieu à la classe \verb|Parameter| et la synchronisation entre l'interface de simulationRainOfMusic et i-score. En effet, pour ce dernier, une boucle infinie peut facilement apparaître comme vu précédemment car les listener vers i-score et vers l'interface de simulationRainOfMusic déclenchent automatiquement la mise à jour des valeurs qu'ils écoutent. 
+

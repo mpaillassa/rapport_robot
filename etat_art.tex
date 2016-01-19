@@ -1,6 +1,6 @@
 \section{Etat de l'art}
 
-Dans cette partie, nous allons présenter les moyens existant nous permettant de répondre à nos objectis. Nous verrons d'abord les moyens pour communiquer avec i-score. Ensuite, nous verrons ce qui a été fait en terme de visualisation et de simulation de performances scéniques impliquant des robots. Enfin, des bibliothèques graphiques 3D seront présentées.
+Dans cette partie, nous allons présenter les moyens existant nous permettant de répondre à nos objectifs. Nous verrons d'abord les moyens pour communiquer avec i-score. Ensuite, nous verrons ce qui a été fait en terme de visualisation et de simulation de performances scéniques impliquant des robots. Enfin, des bibliothèques graphiques 3D seront présentées.
 
 
 \subsection{i-score}
@@ -10,7 +10,7 @@ Tout le travail réalisé devra s'interfacer avec le logiciel i-score utilisé p
 <address pattern> <data type> <data>
 \end{lstlisting}
 Address pattern représente l'URL désignant la destination du message, et data type une chaîne de caractères indiquant le type de données contenues dans data.
-Cependant, le protocole Minuit peut aussi être utilisé : ce protocole s'ajoute au protocole OSC, et permet de mieux organiser les données transmises. Les adresses OSC sont organisées dans un arbre et le logiciel pourra demander via le protocole Minuit à i-score de lui communiquer la valeur de tel ou tel paramètre.  
+Cependant, le protocole Minuit peut aussi être utilisé : ce protocole s'ajoute au protocole OSC, et permet de mieux organiser les données transmises. Les adresses OSC sont organisées dans un arbre et le logiciel pourra demander via le protocole Minuit à i-score de lui communiquer la valeur de tel ou tel paramètre. Nous verrons dans la suite de ce rapport une API qui permet de mettre en oeuvre ces fonctions pour communiquer avec i-score.
 
 \subsection{Visualisation et simulation}
 
@@ -49,12 +49,6 @@ Le monde 3D virtuel est représenté par un graphe dont les noeuds sont logiquem
 
 Ogre est encore une biliothèque open source, sous license MIT, écrite en C++ et OpenGL. Elle est beaucoup utilisée pour réaliser des jeux vidéos et faire des modélisations 3D de personnages. Dans notre cas, nous n'avons pas besoin d'aller si loin au niveau du rendu 3D. L'objectif est plus d'avoir un rendu clair et fidèle à la chorégraphie.  
 
-% \subsection{Irrlicht}
-% - explication : open source/C++/
-
-% - moteur physique : oui avec détection de collision
-
-% - stabilité : pas très stable 
 
 \subsubsection{Qt3D}
 
