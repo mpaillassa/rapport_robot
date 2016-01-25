@@ -1,16 +1,41 @@
 \section{Évaluation du projet}
 \subsection{Validation du logiciel} %validation des fonctionnalités du logiciel ..?
+on va revoir dans les trois parties si les fonctionnalités remplissent bien leurs rôles
 \subsubsection{Visualisation}
-parler de fps, de maniabilité de la scène 3D, de la GUI
+fps fixé 60 fps
+maniabilité c'est celle de easyCam de of
+GUI -> mettre les screenshots
+ergonomie : affichage des informations en plus avec un message help
+capture d'écran : encercler en rouge les messages affichés
+- Time message
+- message de Warning
+- message de sélection
+- GUI viz
+- GUI sim
+
+
 
 \subsubsection{Communication réseau}
-parler de latence, de l'établissement de la connection (qui foire de temps en temps, essayer de faire peut être plusiuers tests pour établir une moyenne), de la perte de paquets éventuelle ..?
+
+- arbre partagé correctement
+- répercussion des modifications instantanées, (i-score le tic 40ms < simulation à 1/60=0.016s soit 16ms)
+--> pas de retard par rapport à i-score
 
 \subsubsection{Simulation}
-parler des aspects simulation, la proximité à la réalité (comparer le modèle théorique au modèle réelle si possible, mais les tests réelles avec les metabots risquent d'être compromis ...)
 
-\subsubsection{Bilan validation}
-reprendre sous forme de tableau ce qui a été cité précédemment ?
+- échelle spatio-temporelle dans le logiciel bien respectée : le robot qui reçoit la commande "dx 100" parcourt bien un mètre en une seconde.
+
+modèle extensible
+- batterie modèle simple mais il peut être modifié au besoin
+- perte de paquets, il faudrait faire des expérimentations pour évaluer le taux de perte correpondant entre i-score et les robots. -> protocole de communication non définitif pour le moment (XBee, BlueTooth ?)
+
+\subsection{Confrontation du logiciel avec les artistes}
+
+- mettre l'image de la chorégraphie
+--> montrer la faisabilité ? histoire de cercle 
+
+- pas eu le temps de tester une chorégraphie conçue avec notre logiciel sur un robot.
+
 
 \subsection{Gestion du projet: calendrier et difficultés}
 
@@ -19,10 +44,12 @@ Dans cette partie, nous verrons la gestion du projet par rapport au calendrier q
 \begin{figure}[H]
   \begin{center}
   	\includegraphics[scale=0.7]{imgs/calendrierbis.png}
-  	\caption{Calendrier bilan. En noir ce qui était prévu. En rouge ce qui n'a pas été fait. En vert ce qui a été fait et n'était pas prévu}
+  	\caption{Calendrier bilan. En noir ce qui était prévu. En rouge ce qui était prévu mais qui n'a pas été fait. En vert ce qui a été fait mais qui n'était pas prévu}
   	\label{cal}
   \end{center}
 \end{figure}
 
-Finalement, le calendrier de départ a subi beaucoup de changements. D'une part, la partie de simulation des mouvements des drones a été abandonnée car le projet s'est focalisé sur la mise en place des métabots en premier. D'autre part, la partie communication ne s'est pas déroulée comme prévu. L'intégration de la communication avec i-score dans simulationRainOfMusic (intégration de l'API d'OSSIA dans simulationRainOfMusic) nous a pris du temps. Une fois l'API en place, la communication avec i-score se fait assez facilement. Ensuite, l'ajout des panels dans l'interface de simulationRainOfMusic et de la possibilité de modifier les paramètres des robots via ces panels a posé deux problèmes: la communication entre l'interface et le reste du logiciel, qui a donné lieu à la classe \verb|Parameter| et la synchronisation entre l'interface de simulationRainOfMusic et i-score. En effet, pour ce dernier, une boucle infinie peut facilement apparaître comme vu précédemment car les listener vers i-score et vers l'interface de simulationRainOfMusic déclenchent automatiquement la mise à jour des valeurs qu'ils écoutent. 
+On remarque que finalement le calendrier de départ a subi beaucoup de changements. D'une part, la partie de simulation des mouvements des drones a été abandonnée car le projet s'est focalisé sur la mise en place des métabots en premier. D'autre part, la partie communication ne s'est pas déroulée comme prévu. L'intégration de la communication avec i-score dans simulationRainOfMusic (intégration de l'API d'OSSIA dans simulationRainOfMusic) nous a pris du temps. Une fois l'API en place, la communication avec i-score se fait assez facilement. 
+
+Ensuite, l'ajout des panels dans l'interface de simulationRainOfMusic et la possibilité de modifier les paramètres des robots via ces panels a posé deux problèmes: la communication entre l'interface et le reste du logiciel, qui a donné lieu à la classe \verb|Parameter| et la synchronisation entre l'interface de simulationRainOfMusic et i-score. En effet, pour ce dernier, une boucle infinie peut facilement apparaître comme vu précédemment car les listener vers i-score et vers l'interface de simulationRainOfMusic déclenchent automatiquement la mise à jour des valeurs qu'ils écoutent. 
 
