@@ -20,7 +20,7 @@ Dans cette partie, nous allons présenter simulationRainOfMusic en s'intéressan
 
 \subsubsection{Visualisation}
 
-La mise en place de la scène 3D se fait assez facilement car la caméra est déjà implémentée dans openFrameworks avec la classe (\verb|EasyCam|). L'utilisateur a la possibilité de se déplacer et de zoomer dans la scène 3D grâce à la souris. Les robots sont représentés par des modèles 3D.
+La mise en place de la scène 3D a été réalisée assez facilement car la caméra est déjà implémentée dans openFrameworks avec la classe (\verb|EasyCam|). L'utilisateur a la possibilité de se déplacer et de zoomer dans la scène 3D grâce à la souris. Les robots sont représentés par des modèles 3D.
 
 %IMAGE screenshot logiciel (attention reference dans le paragraphe suivant)
 
@@ -29,10 +29,9 @@ L'utilisateur peut également sélectionner un robot. Lorsq'un robot est sélect
 IMAGE message de sélection
 
 
-Si deux robots risquent de rentrer en collision, ceux-ci sont entourés d'un cercle rouge afin que ce soit bien visible.
+Si deux robots risquent de rentrer en collision, ceux-ci sont entourés d'un cercle rouge afin que ce soit bien visible et un message informatif indiquant la position et le robot entré en collision est affiché.
 
-IMAGE message de warning
-
+IMAGE message de warning et le cercle rouge
 
 En plus de ces informations, un panel permet de visualiser et de modifier les positions et vitesses des robots via des sliders. Un emplacement dans l'onglet affiche également si les robots sont en collision ou pas. Une fois des vitesses choisies, un bouton play permet de voir la chorégraphie.
 
@@ -59,10 +58,20 @@ Ainsi, la classe \verb|Parameter| encapsulant \verb|ofParameter| utilise un list
 images (*2) bidirectionnel
 
 \subsubsection{Simulation}
-- mouvements de metabots en centimètre/s
-- batterie (linéaire en fonction de la distance parcourue )
-- perte de paquets
 
-détection de collision manuelle : bibliothèques graphiques ne compilaient pas lors de l'implémentation de la collision (Bullet)...
+Concernant la simulation, un des aspects le plus important et étroitement relié à la visualisation est l'échelle spatio-temporelle des mouvements des Metabots. En effet, d'après la documentation technique de ces robots \footnote{\url{https://github.com/Rhoban/Metabot/blob/master/docs/}}, les commandes de mouvements envoyées au robot sont en millimètre par seconde. Ainsi, dans notre logiciel, les vitesses envoyées à travers l'interface utilisateur sont en millimètre par seconde. Cela permet aux utilisateurs d'avoir une simulation de la chorégraphie proche de la réalité.
+
+Ensuite, nous avons implémenté trois évènements qui peuvent arriver au cours de la chorégraphie et qui nous semblaient utiles à mettre en place pour l'artiste simulant la chorégraphie. 
+
+Le premier est la panne du robot dûe à un niveau de batterie nul. Pour cela, un modèle simple linéaire en fonction de la distance parcourue a été implémenté. Néanmoins, ce modèle pourrait être modifié pour obtenir une modélisation plus fidèle à la consommation des batteries des metabots. Le niveau de consommation dse différents metabots est visible dans le panel simulation de l'interface graphique. 
+
+Le deuxième évènement est la perte de paquets lors de la communication entre les robots et le logiciel envoyant les commandes i-score. Identiquement, au point précédent, un modèle simple a été implémenté dû fait que cette communication n'est pas encore établié dans l'état actuel du projet. Une probabilité de perte de paquets a été introduite dans notre implémentation, et permet de simuler les pertes de paquets lorsque notre simulation reçoit de i-score les modifications apportées aux données de l'arbre partagé. 
+
+Lorsqu'un paquet est perdu, le metabot ne verra donc pas ses paramètres changées et gardera les précédentes. Concrètement, lors d'un chorégraphie cela signifiera que les metabots pourraient garder leur vitesse précédente et ne s'arrêterait pas. Ce comportement est fidèle à la réalité, puisque les metabots gardent leurs paramètres tant qu'ils ne reçoivent pas de commandes les modifiant. 
+
+Une fois que le protocole de communication entre les robots et i-score sera en place, des tests pourraient être faits et permettront d'obtenir une idée approximative du pourcentage de perte de paquets, celle-ci pourra être reflétée dans notre logiciel de simulation.
 
 IMAGE panel de simulation
+
+Le troisième évènement qui serait peut être le plus fréquent lors d'une simulation réelle de la chorégraphie avec les robots est la possibilité de collision entre les différents robots. Pour cela, une première approche "manuelle" a été implémentée qui se basaient sur un système simple vérifiant la taille des robots et leur position. Par la suite, la possibilité d'utiliser des bibliothèque de moteur physique a été étudiée mais n'a pas aboutie. La raison principale à cela a été que ces bibliothèques (ofxBullet, ofxMSAPhysics) ne pouvaient être compilées suite à des erreurs dans le code publié sur GitHub. Il est fort probable que ce problème était dû à des commits récents mais nous n'avons pas insisté dans la suite du projet pour recompiler ces bibliothèques. 
+
