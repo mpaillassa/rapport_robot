@@ -53,9 +53,27 @@ IMAGE i-score arbre
 
 Pour ajouter la communication entre simulationRainOfMusic et son interface, la classe \verb|Parameter| a été créee. Elle encapsule la classe \verb|ofParameter| de openFrameworks. La classe \verb|ofParameter| permet de lier un listener vers l'interface à une valeur. Le listener est une fonctionnalité qui permet d'être constamment à l'écoute de toute modification opérée au niveau de l'interface. Par exemple, un ofParameter peut être utilisé pour lier une valeur position en x avec un slider dans l'interface utilisateur : le fait de bouger le slider va mettre à jour la valeur représentant la position en x. De cette façon, utiliser une variable de type \verb|ofParameter| permet de lier un attribut de robot à l'interface utilisateur. 
 
-Ainsi, la classe \verb|Parameter| encapsulant \verb|ofParameter| utilise un listener \verb|Callback| vers i-score et un listener vers l'interface de simulationRainOfMusic.
+Ainsi, la classe \verb|Parameter| encapsulant \verb|ofParameter| utilise un listener \verb|Callback| vers i-score et un listener vers l'interface de simulationRainOfMusic. Pour voir plus précisément ce qui se passe dans les deux sens, voici deux diagrammes de séquence sur les figures \ref{diag1} et \ref{diag2}:
 
-images (*2) bidirectionnel
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6]{i-scoretogui}
+\caption{Modification sur i-score et mise à jour du GUI}
+\label{diag1}
+\end{center}
+\end{figure}
+
+Lorsqu'une valeur est modifiée sur i-score, l'arbre partagé est automatiquement mis à jour. Le paramètre correspondant dans simulationRainOfMusic ayant un \verb|Callback|, ce changement est automatiquement détecté. La valeur du paramètre dans simulationRainOfMusic est alors mise à jour et la fonction set est appelée pour mettre à jour la valeur sur le GUI.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6]{guitoi-score}
+\caption{Modification du GUI et mise à jour d'i-score}
+\label{diag2}
+\end{center}
+\end{figure}
+
+Quand une valeur est modifiée sur le GUI, ceci est détecté par le listener du paramètre correspondant. On vérifie alors que la valeur correspondant sur l'arbre partagé doit bien être changée. Si c'est le cas, on la met à jour sur l'arbre partagé et la valeur sur i-score se met automatiquement à jour grâce à son \verb|Callback|. 
 
 \subsubsection{Simulation}
 
