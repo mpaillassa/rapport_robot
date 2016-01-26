@@ -20,36 +20,76 @@ Dans cette partie, nous allons présenter simulationRainOfMusic en s'intéressan
 
 \subsubsection{Visualisation}
 
-La mise en place de la scène 3D a été réalisée assez facilement car la caméra est déjà implémentée dans openFrameworks avec la classe (\verb|EasyCam|). L'utilisateur a la possibilité de se déplacer et de zoomer dans la scène 3D grâce à la souris. Les robots sont représentés par des modèles 3D.
+La mise en place de la scène 3D a été réalisée assez facilement car la caméra est déjà implémentée dans openFrameworks avec la classe (\verb|EasyCam|). L'utilisateur a la possibilité de se déplacer et de zoomer dans la scène 3D grâce à la souris. Les robots sont représentés par des modèles 3D. Un exemple de vue de l'interface est donné ci-dessous en figure \ref{interface}:
 
-%IMAGE screenshot logiciel (attention reference dans le paragraphe suivant)
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{imgs/view2}
+\caption{Vue générale de l'interface graphique}
+\label{interface}
+\end{figure}
 
-L'utilisateur peut également sélectionner un robot. Lorsq'un robot est sélectionné, différentes caractéristiques le concernant s'affichent en haut à gauche de la fenêtre de simulation (reference a l'image). Ces caractéristiques sont son identifiant, son type (métabot ou drone) et sa position. La sélection se fait en détectant la couleur du robot.
+L'utilisateur peut également sélectionner un robot. Lorsqu'un robot est sélectionné, différentes caractéristiques le concernant s'affichent en haut à gauche de la fenêtre de simulation (le message est représenté en figure \ref{mselec}). Ces caractéristiques sont son identifiant, son type (métabot ou drone) et sa position. La sélection se fait en détectant la couleur du robot.
 
-IMAGE message de sélection
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{imgs/selection}
+\caption{Message de sélection d'un robot}
+\label{mselec}
+\end{figure}
 
+Si deux robots risquent de rentrer en collision, ceux-ci sont entourés d'un cercle rouge (figure \ref{col}) afin que ce soit bien visible et un message informatif indiquant la position et le robot entré en collision est affiché (figure \ref{mcol}).
 
-Si deux robots risquent de rentrer en collision, ceux-ci sont entourés d'un cercle rouge afin que ce soit bien visible et un message informatif indiquant la position et le robot entré en collision est affiché.
+\begin{figure}[htbp]
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.6]{imgs/collision}
+\caption{Exemple d'avertissement de collision}
+\label{col}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.5]{imgs/mcollision}
+\caption{Message contenant des informations sur la collision}
+\label{mcol}
+\end{center}
+\end{minipage}
+\end{figure}
 
-IMAGE message de warning et le cercle rouge
+En plus de ces informations, un panel permet de visualiser et de modifier les positions et vitesses des robots via des sliders. Un emplacement dans l'onglet affiche également si les robots sont en collision ou pas. Une fois des vitesses choisies, un bouton play permet de voir la chorégraphie. Le panel est représenté sur la figure \ref{pan} ci-dessous:
 
-En plus de ces informations, un panel permet de visualiser et de modifier les positions et vitesses des robots via des sliders. Un emplacement dans l'onglet affiche également si les robots sont en collision ou pas. Une fois des vitesses choisies, un bouton play permet de voir la chorégraphie.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{imgs/panel}
+\caption{Panel de visualisation}
+\label{pan}
+\end{figure}
 
-IMAGE screen shot GUI 
-
-possibilité de rajouter des axes x y z en plus pour mieux situer le robot dans l'espace
-
-échelle du repère : graduation au mètre
+Enfin l'utilisateur a la possibilité de rajouter des axes selon x, y et z en plus pour mieux situer les robot dans l'espace en plus des axes principaux. Ceux-ci sont gradués au mètre, comme on peut le voir sur la figure \ref{grad} suivante:
 					
-IMAGE image avec graduation
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{imgs/graduation}
+\caption{Graduation des axes}
+\label{grad}
+\end{figure}
 
 \subsubsection{Communication}
 
 La communication avec i-score est possible grâce à l'API d'OSSIA et à la classe \verb|Network|. Cette dernière permet d'initier la communication avec i-score. A la construction d'un objet Network, on lance l'exécution d'une fonction sur un thread qui fait la publication: elle déclare le programme comme un objet réseau, que l'on peut ajouter dans i-score en lui donnant son nom et le numéro de port associé, et qui constitue la racine de l'arbre du réseau. Elle envoie ensuite sur le réseau le noeud 'scène' en le déclarant comme noeud fils du programme.
 
-A l'instanciation d'un robot, celui-ci est ajouté à l'arbre du réseau comme fils du noeud 'scène'. Chacun de ses attributs est aussi publié. Lorsqu'un attribut dans l'arbre publié sur le réseau est modifié via l'interface utilisateur d'i-score, sa valeur est mise à jour dans simulationRainOfMusic grâce à une fonction (\verb|Callback|).
+A l'instanciation d'un robot, celui-ci est ajouté à l'arbre du réseau comme fils du noeud 'scène'. Chacun de ses attributs est aussi publié. Lorsqu'un attribut dans l'arbre publié sur le réseau est modifié via l'interface utilisateur d'i-score, sa valeur est mise à jour dans simulationRainOfMusic grâce à une fonction (\verb|Callback|). La figure suivante \ref{tr} donne un exemple d'arbre de robots visible sur i-score:
 
-IMAGE i-score arbre
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imgs/tree}
+\caption{Exemple d'arbre visible sur i-score}
+\label{tr}
+\end{figure}
+
+La racine est notre logiciel simulationRainOfMusic. Elle a un fils nommé 'scene', qui a lui-même comme fils l'ensemble des robots.
 
 Pour ajouter la communication entre simulationRainOfMusic et son interface, la classe \verb|Parameter| a été créee. Elle encapsule la classe \verb|ofParameter| de openFrameworks. La classe \verb|ofParameter| permet de lier un listener vers l'interface à une valeur. Le listener est une fonctionnalité qui permet d'être constamment à l'écoute de toute modification opérée au niveau de l'interface. Par exemple, un ofParameter peut être utilisé pour lier une valeur position en x avec un slider dans l'interface utilisateur : le fait de bouger le slider va mettre à jour la valeur représentant la position en x. De cette façon, utiliser une variable de type \verb|ofParameter| permet de lier un attribut de robot à l'interface utilisateur. 
 
@@ -89,7 +129,14 @@ Lorsqu'un paquet est perdu, le metabot ne verra donc pas ses paramètres changé
 
 Une fois que le protocole de communication entre les robots et i-score sera en place, des tests pourraient être faits et permettront d'obtenir une idée approximative du pourcentage de perte de paquets, celle-ci pourra être reflétée dans notre logiciel de simulation.
 
-IMAGE panel de simulation
+Le panel de simulation est montré dans la figure \ref{spa} suivante:
 
-Le troisième évènement qui arrivait peut être le plus fréquemment lors d'une simulation réelle de la chorégraphie avec les robots est la possibilité de collision entre les différents robots. Pour cela, une première approche "manuelle" a été implémentée qui se basaient sur un système simple vérifiant la taille des robots et leur position. Par la suite, la possibilité d'utiliser des bibliothèque de moteur physique a été étudiée mais n'a pas aboutie. La raison principale à cela a été que ces bibliothèques (ofxBullet, ofxMSAPhysics) ne pouvaient être compilées suite à des erreurs dans le code publié sur GitHub. Il est fort probable que ce problème était dû à des commits récents mais nous n'avons pas insisté dans la suite du projet pour recompiler ces bibliothèques. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{imgs/spanel}
+\caption{Panel de simulation}
+\label{spa}
+\end{figure} 
+
+Le troisième évènement qui arrivait peut être le plus fréquemment lors d'une simulation réelle de la chorégraphie avec les robots est la possibilité de collision entre les différents robots. Pour cela, une première approche "manuelle" a été implémentée qui se basait sur un système simple vérifiant la taille des robots et leur position. Par la suite, la possibilité d'utiliser des bibliothèque de moteur physique a été étudiée mais n'a pas aboutie. La raison principale à cela a été que ces bibliothèques (ofxBullet, ofxMSAPhysics) ne pouvaient être compilées suite à des erreurs dans le code publié sur GitHub. Il est fort probable que ce problème était dû à des commits récents mais nous n'avons pas insisté dans la suite du projet pour recompiler ces bibliothèques. 
 
