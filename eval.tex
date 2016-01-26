@@ -18,9 +18,9 @@ Par ailleurs, pour alerter l'utilisateur de collision, nous avons choisi d'affic
 
 \subsubsection{Communication réseau}
 
-- arbre partagé correctement
-- répercussion des modifications instantanées, (i-score le tic 40ms < simulation à 1/60=0.016s soit 16ms)
---> pas de retard par rapport à i-score
+Au niveau de la communication, nous avons comparé la fréquence d'appel à la méthode \verb|update| de la classe \verb|ofApp| de mise à jour de la scène par rapport à la fréquence d'i-score. En effet, on pourrait avoir des problèmes de temps si la méthode \verb|update| était appelée à une fréquence moins élevée que le tic d'i-score car on pourrait avoir des données d'i-score qui ne seraient pas utilisées par simulationRainOfmusic (si par exemple \verb|update| est appelée toutes les 5s et que le tic d'i-score est de 2s). 
+
+En réalité, la méthode \verb|update| est appelée toute les 16 ms et le tic d'i-score est de 40 ms par défaut. Ainsi, les données utilisées par simulationRainOfMusic sont toujours synchronisées par rapport à celles d'i-score. On pourrait même imaginer une petite diminution de la fréquence d'appel à \verb|update| pour soulager l'utilisation de ressources, notamment lors d'une représentation avec beaucoup de robots. 
 
 \subsubsection{Simulation}
 
