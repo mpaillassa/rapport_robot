@@ -6,23 +6,15 @@ on va revoir dans les trois parties si les fonctionnalités remplissent bien leu
 
 Concernant la visualisation, les trois critères importants pour évaluer cette partie sont : la fluidité des mouvements, la maniabilité de l'environnement 3D et l'ergonomie de l'interface utilisateur. 
 
-La fluidité des images est assurée par un nombre d'images par seconde (fps) fixé à 60, ce qui permet d'avoir un rendu agréable et fluide. La chorégraphie imaginée par les étudiants compterait 10 robots Metabot, et pour ce nombre le nombre d'images par seconde est toujours 60 : l'image est fluide et l'interface réagit instanément (pour un utilisateur, la différence de vitesse ne se sent pas entre 1 et 10 robots).
-Nous avons testé pour 100 robots, le lancement de l'application prend du temps et le nombre d'images par seconde est divisé par 2, on a donc 30fps ce qui reste correct pour une visualisation. 
+La fluidité des images est assurée par un nombre d'images par seconde (fps) fixé à 60, ce qui permet d'avoir un rendu agréable et fluide. La chorégraphie imaginée par les étudiants compterait 10 robots Metabot, et pour ce nombre le nombre d'images par seconde est toujours 60 fps : l'image est fluide et l'interface réagit instanément (pour un utilisateur, la différence de vitesse ne se sent pas entre 1 et 10 robots).
+Nous avons testé pour 100 robots, le lancement de l'application prend du temps et le nombre d'images par seconde est divisé par 2, on a donc 30 fps ce qui reste correct pour une visualisation. 
 
+La maniabilité de l'environnement 3D repose principalement sur les déplacements de la camera de type rotation et zoom. Les deux sont rendus possibles grâce à la classe \verb|EasyCam| d'openFrameworks qui permet d'avoir une camera simple munie des fonctionnalités usuelles (rotation, zoom, calibrage à l'initialisation automatique par rapport au milieu de la scène). Ainsi, l'utilisateur retrouve un environnement 3D usuel.
 
+Nous avons essayé de penser à l'ergonomie, en rajoutant des menus déroulant pour chaque robot dans l'interface, ce qui permet d'éviter que le panel n'envahisse tout l'écran. De plus, un message d'aide est affiché au lancement du logiciel, il explique les touches à appuyer pour afficher des axes ou la graduation en plus, et aussi pour cacher ce message d'aide.
+De même l'affichage de message de sélection permet à l'utilisateur d'identifier facilement les robots,  ans qu'il ait à regarder le panel des positions.
 
-
-maniabilité c'est celle de easyCam de of
-GUI -> mettre les screenshots
-ergonomie : affichage des informations en plus avec un message help
-capture d'écran : encercler en rouge les messages affichés
-- Time message
-- message de Warning
-- message de sélection
-- GUI viz
-- GUI sim
-
-
+Par ailleurs, pour alerter l'utilisateur de collision, nous avons choisi d'afficher un cercle rouge à l'emplacement du cercle mais aussi d'afficher un message de warning en haut de l'écran. Cela permet d'assurer que cet événement soit bien visible. En effet, si l'utilisateur zoom sur d'autres robots, il risque de ne pas voir le cercle rouge, alors que le message est toujours affiché au même endroit puisqu'il ne dépend pas de la scène 3D. Le cercle rouge permet tout comme le message de sélection, d'identifier plus facilement l'emplacement de la collision.
 
 \subsubsection{Communication réseau}
 
