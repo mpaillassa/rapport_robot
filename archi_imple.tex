@@ -20,7 +20,7 @@ Dans cette partie, nous allons présenter simulationRainOfMusic en s'intéressan
 
 \subsubsection{Visualisation}
 
-La mise en place de la scène 3D a été réalisée assez facilement car la caméra est déjà implémentée dans openFrameworks avec la classe (\verb|EasyCam|). L'utilisateur a la possibilité de se déplacer et de zoomer dans la scène 3D grâce à la souris. Les robots sont représentés par des modèles 3D. Un exemple de vue de l'interface est donné ci-dessous en figure \ref{interface}:
+La mise en place de la scène 3D a été réalisée assez facilement car la caméra est déjà implémentée dans openFrameworks avec la classe (\verb|EasyCam|). L'utilisateur a la possibilité de se déplacer et de zoomer dans la scène 3D grâce à la souris. Les robots sont représentés par des modèles 3D. Un exemple de vue de l'interface est donné ci-dessous en figure \ref{interface} :
 
 \begin{figure}[H]
 \centering
@@ -58,7 +58,7 @@ Si deux robots risquent de rentrer en collision, ceux-ci sont entourés d'un cer
 \end{minipage}
 \end{figure}
 
-En plus de ces informations, un panel permet de visualiser et de modifier les positions et vitesses des robots via des sliders. Un emplacement dans l'onglet affiche également si les robots sont en collision ou pas. Une fois des vitesses choisies, un bouton play permet de voir la chorégraphie. Le panel est représenté sur la figure \ref{pan} ci-dessous:
+En plus de ces informations, un panel permet de visualiser et de modifier les positions et vitesses des robots via des sliders. Un emplacement dans l'onglet affiche également si les robots sont en collision ou pas. Une fois des vitesses choisies, un bouton play permet de voir la chorégraphie. Le panel est représenté sur la figure \ref{pan} ci-dessous :
 
 \begin{figure}[H]
 \centering
@@ -67,7 +67,7 @@ En plus de ces informations, un panel permet de visualiser et de modifier les po
 \label{pan}
 \end{figure}
 
-Enfin l'utilisateur a la possibilité de rajouter des axes selon x, y et z en plus pour mieux situer les robot dans l'espace en plus des axes principaux. Ceux-ci sont gradués au mètre, comme on peut le voir sur la figure \ref{grad} suivante:
+Enfin l'utilisateur a la possibilité de rajouter des axes selon x, y et z en plus pour mieux situer les robot dans l'espace en plus des axes principaux. Ceux-ci sont gradués au mètre, comme on peut le voir sur la figure \ref{grad} suivante :
 					
 \begin{figure}[H]
 \centering
@@ -80,7 +80,7 @@ Enfin l'utilisateur a la possibilité de rajouter des axes selon x, y et z en pl
 
 La communication avec i-score est possible grâce à l'API d'OSSIA et à la classe \verb|Network|. Cette dernière permet d'initier la communication avec i-score. A la construction d'un objet Network, on lance l'exécution d'une fonction sur un thread qui fait la publication: elle déclare le programme comme un objet réseau, que l'on peut ajouter dans i-score en lui donnant son nom et le numéro de port associé, et qui constitue la racine de l'arbre du réseau. Elle envoie ensuite sur le réseau le noeud 'scène' en le déclarant comme noeud fils du programme.
 
-A l'instanciation d'un robot, celui-ci est ajouté à l'arbre du réseau comme fils du noeud 'scène'. Chacun de ses attributs est aussi publié. Lorsqu'un attribut dans l'arbre publié sur le réseau est modifié via l'interface utilisateur d'i-score, sa valeur est mise à jour dans simulationRainOfMusic grâce à une fonction (\verb|Callback|). La figure suivante \ref{tr} donne un exemple d'arbre de robots visible sur i-score:
+A l'instanciation d'un robot, celui-ci est ajouté à l'arbre du réseau comme fils du noeud 'scène'. Chacun de ses attributs est aussi publié. Lorsqu'un attribut dans l'arbre publié sur le réseau est modifié via l'interface utilisateur d'i-score, sa valeur est mise à jour dans simulationRainOfMusic grâce à une fonction (\verb|Callback|). La figure suivante \ref{tr} donne un exemple d'arbre de robots visible sur i-score :
 
 \begin{figure}[H]
 \centering
@@ -93,7 +93,7 @@ La racine est notre logiciel simulationRainOfMusic. Elle a un fils nommé 'scene
 
 Pour ajouter la communication entre simulationRainOfMusic et son interface, la classe \verb|Parameter| a été créee. Elle encapsule la classe \verb|ofParameter| de openFrameworks. La classe \verb|ofParameter| permet de lier un listener vers l'interface à une valeur. Le listener est une fonctionnalité qui permet d'être constamment à l'écoute de toute modification opérée au niveau de l'interface. Par exemple, un ofParameter peut être utilisé pour lier une valeur position en x avec un slider dans l'interface utilisateur : le fait de bouger le slider va mettre à jour la valeur représentant la position en x. De cette façon, utiliser une variable de type \verb|ofParameter| permet de lier un attribut de robot à l'interface utilisateur. 
 
-Ainsi, la classe \verb|Parameter| encapsulant \verb|ofParameter| utilise un listener \verb|Callback| vers i-score et un listener vers l'interface de simulationRainOfMusic. Pour voir plus précisément ce qui se passe dans les deux sens, voici deux diagrammes de séquence sur les figures \ref{diag1} et \ref{diag2}:
+Ainsi, la classe \verb|Parameter| encapsulant \verb|ofParameter| utilise un listener \verb|Callback| vers i-score et un listener vers l'interface de simulationRainOfMusic. Pour voir plus précisément ce qui se passe dans les deux sens, voici deux diagrammes de séquence sur les figures \ref{diag1} et \ref{diag2} :
 
 \begin{figure}[H]
 \begin{center}
@@ -129,7 +129,7 @@ Lorsqu'un paquet est perdu, le metabot ne verra donc pas ses paramètres changé
 
 Une fois que le protocole de communication entre les robots et i-score sera en place, des tests pourraient être faits et permettront d'obtenir une idée approximative du pourcentage de perte de paquets, celle-ci pourra être reflétée dans notre logiciel de simulation.
 
-Le panel de simulation est montré dans la figure \ref{spa} suivante:
+Le panel de simulation est montré dans la figure \ref{spa} suivante :
 
 \begin{figure}[H]
 \centering
