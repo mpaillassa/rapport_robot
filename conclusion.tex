@@ -22,13 +22,11 @@ Plus généralement, notre travail sur la communication bidirectionnelle avec i-
 
 Dans le cadre de travaux futurs sur le simulationRainOfMusic, plusieurs améliorations peuvent être envisagées.
 
-On pourait par exemple initialiser la scène au lancement de simulatiuonRainOfMusic alors que cela se fait dans le code actuellement.
+Certains paramètres pourraient être définis dynamiquement via l'interface, nous pensons notamment aux dimensions de la scène qui pourraient être initialisées au lancement du logiciel. De la même façon, d'un point de vue ergonomique la possibilité de rajouter automatiquement des robots depuis i-score et dynamiquement depuis notre interface semble indispensable. Actuellement, ces deux paramètres sont définis dans le code, sachant que la chorégraphie est composé d'un nombre fixé de robots, c'est une amélioration qui n'est peut être pas prioritaire mais néanmois intéressante.
 
-Dans le même esprit, les robots sont actuellement ajoutés depuis le code. Il serait préférable de pouvoir les ajouter automatiquement soit depuis i-score, soit depuis l'interface de simulationRainOfMusic.  
+Une amélioration plus prioritaire du point de vue de la chorégraphie est celle qui a été mentionnée par les artistes et n'a pas pu être pris en compte dans la simulation. Il s'agit du fait que les metabots puissent changer leur hauteur. Il serait intéressant d'avoir un modèle 3D avec la possibilité d'articuler ses membres pour pouvoir représenter visuellement le changement d'hauter. Cette problématique a été étudiée dans l'article visant à modéliser les différents mouvements des robots \cite{robotArt} présenté dans l'état de l'art. Nous pourrions donc envisager que le travail à fournir se baserait sur cette article, sachant que toutes les parties composant le metabot sont disponibles en modèles 3D.
 
-De plus, un aspect important de la chorégraphie a été mentionné par les artistes et n'est pas pris en compte dans la simulation. Il s'agit du fait que les metabots puissent changer leur hauteur. Il serait intéressant d'avoir un modèle 3D avec la possibilité d'articuler ses membres pour pouvoir représenter visuellement le changement d'hauter.
-
-Enfin, lorsque le projet introduira des drones, une modélisation physique de leurs mouvements pourra être implémentée dans le logiciel.
+Enfin, lorsque le projet introduira des drones, une modélisation physique de leurs mouvements pourra être implémentée dans le logiciel, pour obtenir une simulation proche de la réalité.
 
 %\subsection{Apport personnel}
 %peut être écrire un paragraphe chacun avec ce que ça nous apportait ..?

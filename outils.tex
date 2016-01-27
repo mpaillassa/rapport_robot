@@ -1,29 +1,29 @@
 \section{Outils utilisés}
 
-Dans cette partie, nous allons présenter les outils que l'on a utilisé pour réaliser simulationRainOfMusic. Nous présenterons d'abord l'API d'OSSIA qui a été utilisée pour la communication avec i-score. Ensuite, nous représenterons les bibliothèques graphiques 3D évoquées précédemment et expliquerons le choix que nous avons fait.
+Dans cette partie, nous allons présenter les outils utilisés pour réaliser notre logiciel simulationRainOfMusic. Nous présenterons d'abord l'API d'OSSIA qui a été utilisée pour la communication avec i-score. Ensuite, un bilan récapitulant les bibliothèques graphiques 3D évoquées précédemment permettra de conclure sur l'explication du choix finalement établi.
 
 \subsection{L'API d'OSSIA}
 
 OSSIA est l'acronyme pour Open Scenario System for Interactive Application. Comme son nom l'indique, c'est un projet de développement d'outils logiciels de scénarisation pour des applications intéractives. Le logiciel i-score a été écrit dans le cadre de ce projet. 
 
-Dans simulationRainOfMusic, nous utilisons l'API implémentée dans le projet OSSIA pour pouvoir communiquer avec i-score via le protocole minuit. L'API nous permet de réaliser les principales fonctions dont nous avons besoin: envoyer des données vers i-score et récupérer des données d'i-score depuis simulationRainOfMusic.  Minuit fonctionne en organisant les données sous forme d'arbre. Dans simulationRainOfMusic, on va créer des robots qui ont certains attributs et l'API va nous permettre de créer les noeuds de l'arbre correspondant aux robots et à leurs attributs et de les envoyer à i-score. L'API va également nous permettre d'écouter les attributs des robots pour les actualiser dans simulationRainOfMusic et permettre l'affichage des robots. 
+Dans simulationRainOfMusic, nous utilisons l'API implémentée dans le projet OSSIA pour pouvoir communiquer avec i-score via le protocole minuit. L'API nous permet de réaliser les principales fonctions dont nous avons besoin: envoyer des données vers i-score et récupérer des données d'i-score depuis simulationRainOfMusic.  Minuit fonctionne en organisant les données sous forme d'arbre. Dans simulationRainOfMusic, des robots ayant certains attributs seront créés et l'API nous permettra de créer les noeuds de l'arbre correspondant aux robots ainsi qu'à leurs attributs et de les envoyer à i-score. De plus, cette API fournit également la possibilité d'écouter les modifications apportées aux attributs des robots pour les actualiser dans simulationRainOfMusic et permettre l'affichage des robots en synchronisation avec les donnnées d'i-score. 
 
-Des exemples simples de fonctionnement sont disponibles dans les exemples Minuit\_publication et Minuit\_Exploration de la documentation de l'API. Un arbre est publié et partagé par Minuit\_publication et Minuit\_exploration explore cet arbre et renvoie sa structure.
+Des exemples simples de fonctionnement sont disponibles dans les exemples Minuit\_publication et Minuit\_Exploration de la documentation de l'API : un arbre est publié et partagé par Minuit\_publication et Minuit\_exploration explore cet arbre et renvoie sa structure.
 
 \subsection{Bibliothèques graphiques 3D}
 
-Dans cette partie, un bilan de l'étude des différents biblitohèques sera présentée sous forme de tableau avec cinq critères jugés importants dans le choix de la biliothèque. Parmi ces cinq, ne seront pas présentées ceux élémentaires telles que la présence d'un moteur 3D complet, l'aspect multi-plateforme, pour lesquelles il semble évident que toutes les bibliothèques citées jusque là les remplissent.
+Dans cette partie, un bilan de l'étude des différents bibliothèques sera présentée sous forme de tableau avec cinq critères jugés importants dans le choix de la biliothèque. Parmi ces cinq, ne seront pas présentées ceux élémentaires telles que la présence d'un moteur 3D complet, l'aspect multi-plateforme, pour lesquelles il semble évident que toutes les bibliothèques citées jusque là les remplissent.
 
-Un des critères qui nous a paru essentiel dans le développement du logiciel est l'auto-suffisance de la bibliothèque. C'est-à-dire un choix de possibilité assez large proposé dans la bibliothèque de base pour éviter l'utilisation de plusieurs outils annexes. Par exemple, nous avons vu pour Babylon.js qu'il faudrait l'utilisation d'autres outils (Node.js ?) pour pouvoir réaliser la réception de messages UDP. 
+Un des critères qui nous a paru essentiel dans le développement du logiciel est l'auto-suffisance de la bibliothèque. C'est-à-dire un choix de possibilité assez large proposé dans la bibliothèque de base pour éviter l'utilisation de plusieurs outils annexes. Par exemple, il semblerait que Babylon.js nécessiterait l'utilisation d'outils externes tels que Node.js pour pouvoir réaliser la réception de messages UDP. 
 
 Un critère moins important dans une première partie du développement mais qui serait nécessaire par la suite est la présence d'un moteur physique. En effet, il serait intéressant d'avoir des fonctionnalités pour la détection de collisions, permettant ainsi d'alerter l'artiste lors de la conception de la chorégraphie.
 
-Plus généralement, certains critères choisis pour ce bilan ont été réfléchi en vue de l'interopérabilité de notre logiciel avec i-score : l'aspect open source (notamment license GPL) et le langage utilsé. En effet, il nous semblait plus pertinant de respecter une unicité de langage avec i-score, et donc choisir le C++. 
-D'autres critères ont été pensé dans l'optique de la maintenabilité, notamment la facilité à prendre en main les différentes fonctionnalités de la bibliothèque, la stabilité des versions proposées, la présence d'une communauté active (tant au niveau développeurs qu'utilisateurs).
+Plus généralement, certains critères choisis pour ce bilan ont été réfléchi en vue de l'interopérabilité de notre logiciel avec i-score : l'aspect open source (notamment license GPL) et le langage utilisé. En effet, il nous semblait plus pertinant de respecter une unicité de langage avec i-score, et donc choisir le C++. 
+D'autres critères ont été pensés dans l'optique de la maintenabilité, notamment la facilité à prendre en main les différentes fonctionnalités de la bibliothèque, la stabilité des versions proposées, la présence d'une communauté active tant au niveau développeurs qu'utilisateurs.
 
 
 
-Les critères qui ont donc été choisi pour ce bilan sont : 
+Les critères qui ont donc été choisis pour ce bilan sont les aspects suivants : 
 \begin{itemize}
 \item open source et notamment license GPL comme le logiciel i-score 
 \item détection de collisions (moteur physique)
