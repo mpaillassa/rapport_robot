@@ -17,9 +17,9 @@ Cependant, le protocole Minuit peut aussi être utilisé : ce protocole s'ajoute
 
 Cette partie présentera quelques articles scientifiques se rapprochant de notre projet autour des thématiques telles que la visualisation de scène 3D d'une peformance scénique et la modélisation de robot dans un espace 3D. 
 
-Dans le domaine de visualisation de performance scénique 3D, un des objectifs est d'obtenir un rendu se rapprochant le plus possible de la réalité de façon à ce que l'on puisse avoir un aperçu réaliste de la performance conçue virtuellement. C'est dans cette optique que le logiciel de visualisation et simulation 3D StageViz\cite{StageViz} a été développé . Ce logiciel permet de visualiser en 3D en temps réel une performance scénique qui a été conçue virtuellement à l'aide d'un autre logiciel dédié à cela. Dans la forme, nous retrouvons ici, un cas très similaire à notre objectif avec la présence de visualisation mais aussi d'interopérabilité avec un outil de conception scénique.
+Dans le domaine de visualisation de performance scénique 3D, un des objectifs est d'obtenir un rendu se rapprochant le plus possible de la réalité de façon à ce que l'on puisse avoir un aperçu réaliste de la performance conçue virtuellement. C'est dans cette optique que le logiciel de visualisation et simulation 3D StageViz\cite{StageViz} a été développé. Ce logiciel permet de visualiser en 3D en temps réel une performance scénique qui a été conçue virtuellement à l'aide d'un autre logiciel dédié à cela. Dans la forme, nous retrouvons ici, un cas très similaire à notre objectif avec la présence de visualisation mais aussi d'interopérabilité avec un outil de conception scénique.
 
-StageViz se base sur trois éléments principaux que l'on doit aussi retrouver dans notre projet : les objets 3D, la manipulation de la scène et la chronologie. Dans le cadre de notre projet, les objets 3D représenteront les robots et la scène pourra être visionner sous tous les angles grâce à une camera mobile. En ce qui concerne la composante temporelle, elle sera gérée au niveau d'i-score qui nous envoie les données sur les robots au fur et à mesure. 
+StageViz se base sur trois éléments principaux que l'on doit aussi retrouver dans notre projet : les objets 3D, la manipulation de la scène et la chronologie. Dans le cadre de notre projet, les objets 3D représenteront les robots et la scène pourra être visionnée sous tous les angles grâce à une camera mobile. En ce qui concerne la composante temporelle, elle sera gérée au niveau d'i-score qui nous envoie les données sur les robots au fur et à mesure. 
 
 Une grande différence entre StageViz et notre projet réside dans l'utilisation du rendu 3D. StageViz serait un outil pour une simulation réaliste pour visionner les différents états des objets dans la scène au cours de la performance. Notre but serait de visualiser l'évolution des positions des robots dans la scène pour aider l'écriture de la chorégraphie. L'idée est donc d'avoir un rendu permettant une vision simplifiée et globale de la chorégraphie avec tous les robots.
 
@@ -28,7 +28,7 @@ Dans le domaine de performance par les robots, une équipe de recherche a étudi
 Pour notre logiciel, la possibilité de modéliser les différents mouvements d'un robot est bien sûr intéressante mais ne représente pas une priorité : en effet, la chorégraphie comptera plus d'une dizaine de robots et notre simulation mettra plus en avant une vue d'ensemble de la chorégraphie que le mouvement de chaque robot. Cet article indique donc une possibilité de fonctionnalités à implémenter dans notre logiciel.
 
 \subsection{Bibliothèques graphiques}
-Dans cette partie, nous allons présenter différentes bibliothèques graphiques 3D que nous pourrions utiliser: OpenSceneGraph, openFrameworks, Ogre, Blender, Unity, Qt3D, Babylon.js et Three.js. Toutes ces bibliothèques sont basées sur OpenGL (ou WebGL) et la raison pour laquelle nous préférions utiliser une de ces bibliothèques et non OpenGL réside dans l'hypothèse que le temps de réalisation nécessitée serait plus important avec OpenGL pour un résultat équivalent.
+Dans cette partie, nous allons présenter différentes bibliothèques graphiques 3D que nous pourrions utiliser: OpenSceneGraph, openFrameworks, Ogre, Blender, Unity, Qt3D, Babylon.js et Three.js. Toutes ces bibliothèques sont basées sur OpenGL (ou WebGL) et la raison pour laquelle nous préférions utiliser une de ces bibliothèques et non OpenGL réside dans l'hypothèse que le temps de réalisation nécessaire serait plus important avec OpenGL pour un résultat équivalent.
 
 
 Toutes les bibliothèques citées ci-dessus sont déployables sur pratiquement toutes les plateformes (y compris smartphones et tablettes). Celles qui sont orientées objets permettent d'avoir une programmation plus haut niveau tout en profitant des performances d'OpenGL. Elles intègrent également des packages additionnels permettant d'avoir des rendus 3D plus poussés. Les deux biblithèques Babylon.js et Three.js se déploient sur navigateur via JavaScript et utilisent WebGL.
@@ -36,9 +36,9 @@ Toutes les bibliothèques citées ci-dessus sont déployables sur pratiquement t
 
 \subsubsection{openFrameworks}
 
-openFrameworks est open source, sous license MIT (compatible GPL), basée sur du C++ et OpenGL. Elle permet également d'intégrer et d'utiliser d'autres bibliothèques comme OpenCV par exemple, qui pourrait être utilisée pour de la gestion de trajectoires et de collisions, et de gérer des flux audio, ce qui peut s'avérer utile dans l'optique d'embarquer des haut parleurs sur les robots pour générer des sons. 
+openFrameworks est open source, sous license MIT (compatible GPL), basée sur du C++ et OpenGL. Elle permet également d'intégrer et d'utiliser d'autres bibliothèques comme OpenCV par exemple, qui pourrait être utilisée pour de la gestion de trajectoires et de collisions, ou de flux audio, ce qui peut s'avérer utile dans l'optique d'embarquer des haut parleurs sur les robots pour générer des sons. 
 
-De plus, une des lignes directrices de ce projet actif est la simplicité: la bibliothèque est faite de manière à pouvoir être utilisée avec un minimum de connaissances, et propose des tutoriaux sur des bases comme l'OpenGL ou la programmation orientée objet. Ceci est un atout dans notre contexte puisque nous avons peu de temps pour implémenter le projet qui sera ensuite plus facile à reprendre par d'autres personnes.
+De plus, une des lignes directrices de ce projet actif est la simplicité: la bibliothèque est faite de manière à pouvoir être utilisée avec un minimum de connaissances, et propose des tutoriaux sur des bases comme l'OpenGL ou la programmation orientée objet. Ceci est un atout dans notre contexte puisque nous avons peu de temps pour implémenter le projet et celui-ci sera plus facile à reprendre par d'autres personnes.
 
 \subsubsection{OpenSceneGraph}
 
@@ -48,7 +48,7 @@ Le monde 3D virtuel est représenté par un graphe dont les noeuds sont logiquem
 
 \subsubsection{Ogre}
 
-Ogre est encore une biliothèque open source, sous license MIT, écrite en C++ et OpenGL. Elle est beaucoup utilisée pour réaliser des jeux vidéos et faire des modélisations 3D de personnages. Dans notre cas, nous n'avons pas besoin d'aller si loin au niveau du rendu 3D. L'objectif est plus d'avoir un rendu clair et fidèle à la chorégraphie, la modélisation des objets 3D importe peu. 
+Ogre est encore une biliothèque open source, sous license MIT, écrite en C++ et OpenGL. Elle est beaucoup utilisée pour réaliser des jeux vidéos et des modélisations 3D de personnages. Dans notre cas, nous n'avons pas besoin d'aller si loin au niveau du rendu 3D. L'objectif est plus d'avoir un rendu clair et fidèle à la chorégraphie, la modélisation des objets 3D importe moins. 
 
 
 \subsubsection{Qt3D}
