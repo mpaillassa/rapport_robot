@@ -6,9 +6,17 @@ Dans cette partie, nous faisons le bilan de notre travail sur simulationRainOfMu
 
 tableau ou liste de check pour les fonctionnalités implémentées
 
+Nous avons implémenté un environnement 3D contenant des robots simulant une chorégraphie réalisée avec i-score. Pour la simulation, des paramètres comme la batterie et la perte de paquets ont été introduits. Concernant la communication, celle-ci est bi-directionnelle et cela permet à notre logiciel d'être aussi un logiciel d'écriture de chorégaphie. 
+
+Bien que la partie drones n'ait pas été réalisée dû à un manque d'informations, les besoins initiaux ont pu être satisfaits. De plus, la possibilité d'écrire avec notre logiciel nous paraît être une fonctionnalité très intéressante pour la suite du projet lors de l'écriture réelle de la chorégraphie.
+
 \subsection{Apport de notre travail dans le projet RainOfMusic}
 
-ce que notre travail a finalement apporté au projet dans globalité (possibilité de simuler mais aussi d'écrie la chorégraphie avec notre logiciel : un plus qui n'avait pas vraiment explicité dans les besoins au début)
+Dans le cadre général du projet RainOfMusic, nous espérons que notre logiciel sera un support visuel mais aussi une aide pour les artistes à l'écriture de la chorégraphie. Ainsi, simulationRainOfMusic sera utilisé lors de la phase de la réalisation de la chorégraphie et de la simulation de cette dernière. 
+
+L'ensemble de notre code étant en open source sur le dépôt GitHub, le logiciel pourra facilement être récupéré et amélioré pour correspondre aux besoins des artistes. 
+
+Plus généralement, notre travail sur la communication bidirectionnelle avec i-score qui repose sur une classe existante d'openFrameworks (\verb|ofParameter|) pourra être utile dans un cadre plus large que ce projet. En effet, les utilisateurs d'i-score pourront synchroniser facilement avec openFrameworks.
 
 \subsection{Améliorations envisageables}
 
@@ -18,10 +26,9 @@ On pourait par exemple initialiser la scène au lancement de simulatiuonRainOfMu
 
 Dans le même esprit, les robots sont actuellement ajoutés depuis le code. Il serait préférable de pouvoir les ajouter automatiquement soit depuis i-score, soit depuis l'interface de simulationRainOfMusic.  
 
-De plus, un aspect important de la chorégraphie a été mentionné par les artistes et n'est pas pris en compte dans la simulation. Il s'agit du fait que les metabots peuvent changer leur hauteur.
+De plus, un aspect important de la chorégraphie a été mentionné par les artistes et n'est pas pris en compte dans la simulation. Il s'agit du fait que les metabots puissent changer leur hauteur. Il serait intéressant d'avoir un modèle 3D avec la possibilité d'articuler ses membres pour pouvoir représenter visuellement le changement d'hauter.
 
-Enfin, quand il y aura plus d'informations sur les drones, il faudra implémenter leurs mouvements. 
-
+Enfin, lorsque le projet introduira des drones, une modélisation physique de leurs mouvements pourra être implémentée dans le logiciel.
 
 %\subsection{Apport personnel}
 %peut être écrire un paragraphe chacun avec ce que ça nous apportait ..?
