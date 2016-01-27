@@ -115,6 +115,13 @@ Lorsqu'une valeur est modifiée sur i-score, l'arbre partagé est automatiquemen
 
 Quand une valeur est modifiée sur le GUI, listener correspondant à ce paramètre détecte la modification. On vérifie alors que la valeur correspondant sur l'arbre partagé doit bien être changée. Si c'est le cas, on la met à jour sur l'arbre partagé et la valeur sur i-score se met automatiquement à jour grâce à son \verb|Callback|. 
 
+L'intégration de cette communication bi-directionnelle a permis de donner lieu à une fonctionnalité non prévue mais fort intéressante : la possibilité d'écrire la chorégraphie en utilisant notre logiciel. En effet, le logiciel i-score peut enregistrer pendant une durée limitée les différentes valeurs de l'arbre mises à jour. 
+
+Ainsi, en lancant l'énregistrement d'un paramètre dans i-score, toutes les modifications apportés à ce paramètre via l'interface de notre logiciel avec le slider seront enregistrées. Par la suite, les valeurs ainsi obtenues sont interpolées dessinant ainsi une courbe représentant la variation du paramètre.
+
+Cette courbe pourra être enregistrée, et réutilisée dans la chorégaphie. Il est donc possible d'écrire la chorégraphie directement via notre interface. C'est une fonctionnalité qui aide beaucoup les artistes qui ont tendance à préférer travailler avec un rendu visuel qu'avec des courbes décrivant des variations.
+
+
 \subsubsection{Simulation}
 
 Concernant la simulation, un des aspects le plus important et étroitement relié à la visualisation est l'échelle spatio-temporelle des mouvements des Metabots. En effet, d'après la documentation technique de ces robots \footnote{\url{https://github.com/Rhoban/Metabot/blob/master/docs/}}, les commandes de mouvements envoyées au robot sont en millimètre par seconde. Ainsi, dans notre logiciel, les vitesses envoyées à travers l'interface utilisateur sont en millimètre par seconde. Cela permet aux utilisateurs d'avoir une simulation de la chorégraphie proche de la réalité.
