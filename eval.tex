@@ -1,7 +1,11 @@
 \section{Évaluation du projet}
+
+Dans cette partie, nous allons faire une évaluation du projet. Nous évaluerons d'abord le logiciel dans ses trois principales parties. Ensuite, nous verrons son utilisabilité pour les artistes et l'écriture de la chorégraphie. Enfin, d'une manière plus générale, nous aborderons la gestion du projet. 
+
 \subsection{Validation du logiciel} %validation des fonctionnalités du logiciel 
 
-on va revoir dans les trois parties si les fonctionnalités remplissent bien leurs rôles
+Dans cette partie, nous vérifions que les principales fonctionnalités sont correctes. On s'intéressera aux trois parties du logiciel séparemment: la visualisation, la communication et la simulation. 
+
 \subsubsection{Visualisation}
 
 Concernant la visualisation, les trois critères importants pour évaluer cette partie sont : la fluidité des mouvements, la maniabilité de l'environnement 3D et l'ergonomie de l'interface utilisateur. 
@@ -24,16 +28,21 @@ En réalité, la méthode \verb|update| est appelée toute les 16 ms et le tic d
 
 \subsubsection{Simulation}
 
-- échelle spatio-temporelle dans le logiciel bien respectée : le robot qui reçoit la commande "dx 100" parcourt bien un mètre en une seconde.
+A propos du côté simulation du logiciel, plusieurs aspects peuvent être vérifiés.
 
-modèle extensible
-- batterie modèle simple mais il peut être modifié au besoin
-- perte de paquets, il faudrait faire des expérimentations pour évaluer le taux de perte correpondant entre i-score et les robots. -> protocole de communication non définitif pour le moment (XBee, BlueTooth ?)
+D'abord, l'échelle spatio-temporelle : chaque graduation représente un mètre et si on choisit $dx=100 mm.s^{-1}$ ou $dy=100 mm.s^{-1}$ pour un metabot, celui-ci avance bien d'une graduation toutes les dix secondes.
+
+Ensuite, on peut s'intéresser à la batterie des robots. Celle-ci se décrémente bien linéairement en fonction de la distance parcourue par le robot en question. A l'arrêt, les robots ne consomment pas puis si on fait parcourir dix mètres à un robot, on peut voir que la même quantité de batterie est consommée sur chaque mètre. Des expérimentations pourraient être faites pour avoir un modèle de consommation plus réaliste. Par exemple, on pourrait s'intéresser à la consommation à l'arrêt ou selon la vitesse et la fréquence de pas quand le metabot est en mouvement.
+
+Enfin, pour la perte de paquet, on peut compter le nombre de paquets perdus et reçus et retrouver le pourcentage de perte correspondant. Pour que celui-ci soit réaliste, on pourrait faire des expérimentations pour l'évaluer mais le protocole de communication n'est pas encore décidé définitivement (bluetooth ou XBee). 
 
 \subsection{Confrontation du logiciel avec les artistes}
 
+Dans le cadre d'une rencontre avec les artistes, nous avons pu commencer à écrire la chorégraphie qu'ils avaient conçu. Celle-ci est présentée dans la figure suivante \ref{chor}:
+
 - mettre l'image de la chorégraphie
---> montrer la faisabilité ? histoire de cercle 
+
+Dans cette chorégraphie, il faudra notamment que les metabots décrivent un cercle. Ceci a déjà pu être fait dans simulationRainOfMusic.
 
 - pas eu le temps de tester une chorégraphie conçue avec notre logiciel sur un robot.
 
