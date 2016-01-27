@@ -58,7 +58,7 @@ Si deux robots risquent de rentrer en collision, ceux-ci sont entourés d'un cer
 \end{minipage}
 \end{figure}
 
-En plus de ces informations, un panel (figure \ref{pan})permet de visualiser et de modifier les positions et vitesses des robots via des sliders. Un emplacement dans l'onglet affiche également si les robots sont en collision ou non. Une fois des vitesses choisies, un bouton play permet de voir la chorégraphie. 
+En plus de ces informations, un panel (figure \ref{pan}) permet de visualiser et de modifier les positions et vitesses des robots via des sliders. Un emplacement dans l'onglet affiche également si les robots sont en collision ou non. Une fois des vitesses choisies, un bouton play permet de voir la chorégraphie. 
 
 \begin{figure}[H]
 \centering
@@ -78,7 +78,7 @@ Enfin l'utilisateur a la possibilité de rajouter des axes selon x, y et z en pl
 
 \subsubsection{Communication}
 
-La communication avec i-score est possible grâce à l'API d'OSSIA et à la classe \verb|Network|. Cette dernière permet d'initier la communication avec i-score. A la construction d'un objet Network, une fonction sur un thread qui fait la publication s'éxécute : elle déclare le programme comme un objet réseau, que l'on peut ajouter dans i-score en lui donnant son nom et le numéro de port associé, et qui constitue la racine de l'arbre du réseau. Elle envoie ensuite sur le réseau le noeud 'scène' en le déclarant comme noeud fils du programme.
+La communication avec i-score est possible grâce à l'API d'OSSIA et à la classe \verb|Network|. Cette dernière permet d'initier la communication avec i-score. A la construction d'un objet Network, la méthode réalisant la publication s'éxécute sur un thread : elle déclare le programme comme un objet réseau, que l'on peut ajouter dans i-score en lui donnant son nom et le numéro de port associé, et qui constitue la racine de l'arbre du réseau. Elle envoie ensuite sur le réseau le noeud 'scène' en le déclarant comme noeud fils du programme.
 
 A l'instanciation d'un robot, celui-ci est ajouté à l'arbre du réseau comme fils du noeud 'scène'. Chacun de ses attributs est aussi publié. Lorsqu'un attribut dans l'arbre publié sur le réseau est modifié via l'interface utilisateur d'i-score, sa valeur est mise à jour dans simulationRainOfMusic grâce à une fonction (\verb|Callback|). Cet arbre est visible sur i-score comme présenté dans la figure \ref{tr}.
 
@@ -117,7 +117,7 @@ Quand une valeur est modifiée sur le GUI, listener correspondant à ce paramèt
 
 L'intégration de cette communication bi-directionnelle a permis de donner lieu à une fonctionnalité non prévue mais fort intéressante : la possibilité d'écrire la chorégraphie en utilisant notre logiciel. En effet, le logiciel i-score peut enregistrer pendant une durée limitée les différentes valeurs de l'arbre mises à jour. 
 
-Ainsi, en lancant l'énregistrement d'un paramètre dans i-score, toutes les modifications apportés à ce paramètre via l'interface de notre logiciel avec le slider seront enregistrées. Par la suite, les valeurs ainsi obtenues sont interpolées dessinant ainsi une courbe représentant la variation du paramètre.
+Ainsi, en lancant l'enregistrement d'un paramètre dans i-score, toutes les modifications apportées à ce paramètre via l'interface de notre logiciel avec le slider seront enregistrées. Par la suite, les valeurs ainsi obtenues sont interpolées dessinant ainsi une courbe représentant la variation du paramètre.
 
 Cette courbe pourra être enregistrée (figure \ref{record}), et réutilisée dans la chorégaphie. Il est donc possible d'écrire la chorégraphie directement via notre interface. C'est une fonctionnalité qui aide beaucoup les artistes qui ont tendance à préférer travailler avec un rendu visuel qu'avec des courbes décrivant des variations.
 
@@ -129,15 +129,15 @@ Cette courbe pourra être enregistrée (figure \ref{record}), et réutilisée da
 \end{figure} 
 \subsubsection{Simulation}
 
-Concernant la simulation, un des aspects le plus important et étroitement relié à la visualisation est l'échelle spatio-temporelle des mouvements des Metabots. En effet, d'après la documentation technique de ces robots \footnote{\url{https://github.com/Rhoban/Metabot/blob/master/docs/}}, les commandes de mouvements envoyées au robot sont en millimètre par seconde. Ainsi, dans notre logiciel, les vitesses envoyées à travers l'interface utilisateur sont en millimètre par seconde. Cela permet aux utilisateurs d'avoir une simulation de la chorégraphie proche de la réalité.
+Concernant la simulation, un des aspects le plus important et étroitement relié à la visualisation est l'échelle spatio-temporelle des mouvements des metabots. En effet, d'après la documentation technique de ces robots \footnote{\url{https://github.com/Rhoban/Metabot/blob/master/docs/}}, les commandes de mouvements envoyées au robot sont en millimètre par seconde. Ainsi, dans notre logiciel, les vitesses envoyées à travers l'interface utilisateur sont en millimètre par seconde. Cela permet aux utilisateurs d'avoir une simulation de la chorégraphie proche de la réalité.
 
 Ensuite, nous avons implémenté trois évènements qui peuvent arriver au cours de la chorégraphie et qui nous semblaient utiles à mettre en place pour l'artiste simulant la chorégraphie. 
 
 Le premier est la panne du robot dûe à un niveau de batterie nul. Pour cela, un modèle simple linéaire en fonction de la distance parcourue a été implémenté. Néanmoins, ce modèle pourrait être modifié pour obtenir une modélisation plus fidèle à la consommation réelle des batteries des metabots. Le niveau de consommation des différents metabots est visible dans le panel simulation de l'interface graphique. 
 
-Le deuxième évènement est la perte de paquets lors de la communication entre les robots et le logiciel i-score envoyant les commandes. Identiquement, au point précédent, un modèle simple a été implémenté dû fait que cette communication n'est pas encore établié dans l'état actuel du projet. Une probabilité de perte de paquets a été introduite dans notre implémentation, et permet de simuler les pertes de paquets lorsque notre simulation reçoit de i-score les modifications apportées aux données de l'arbre partagé. 
+Le deuxième évènement est la perte de paquets lors de la communication entre les robots et le logiciel i-score envoyant les commandes. Identiquement, au point précédent, un modèle simple a été implémenté du fait que cette communication n'ait pas encore été établie dans l'état actuel du projet. Une probabilité de perte de paquets a été introduite dans notre implémentation, et permet de simuler les pertes de paquets lorsque notre simulation reçoit de i-score les modifications apportées aux données de l'arbre partagé. 
 
-Lorsqu'un paquet est perdu, le metabot ne verra donc pas ses paramètres changées et gardera les précédentes. Concrètement, lors d'une chorégraphie cela signifierait que les metabots pourraient garder leur vitesse précédente et ne s'arrêterait pas. Ce comportement est fidèle à la réalité, puisque les metabots gardent leurs paramètres tant qu'ils ne reçoivent pas de commandes les modifiant. 
+Lorsqu'un paquet est perdu, le metabot ne verra donc pas ses paramètres changés et gardera les précédents. Concrètement, lors d'une chorégraphie cela signifierait que les metabots pourraient garder leur vitesse précédente et ne s'arrêterait pas. Ce comportement est fidèle à la réalité, puisque les metabots gardent leurs paramètres tant qu'ils ne reçoivent pas de commandes les modifiant. 
 
 Une fois que le protocole de communication entre les robots et i-score sera en place, des tests pourraient être conduits et permettront d'obtenir une idée approximative du pourcentage de perte de paquets, celle-ci pourra être reflétée dans notre logiciel de simulation.
 
